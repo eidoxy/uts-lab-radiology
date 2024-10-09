@@ -1,7 +1,7 @@
 import mysql from 'mysql2/promise';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 
-dotenv.config();
+require('dotenv').config();
 
 export default async function getConnection() {
   try {

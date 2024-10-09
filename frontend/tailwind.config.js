@@ -1,4 +1,5 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
+import colors from 'tailwindcss/colors';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -9,6 +10,7 @@ export default {
       satoshi: ['Satoshi', 'sans-serif'],
     },
     colors: {
+      ...colors,
       current: 'currentColor',
       transparent: 'transparent',
       white: '#FFFFFF',
