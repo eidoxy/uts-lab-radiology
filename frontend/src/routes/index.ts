@@ -10,6 +10,7 @@ import memberRoutes from './member';
 import publisherRoutes from './publisher';
 import shelfRoutes from './shelf';
 import stockRoutes from './stock';
+import scheduleRoutes from './schedule';
 
 const Dashboard = lazy(() => import('../pages/Admin/Dashboard'));
 const Settings = lazy(() => import('../pages/Settings'));
@@ -66,5 +67,6 @@ const routes = [
   ...publisherRoutes,
   ...shelfRoutes,
   ...stockRoutes,
+  ...scheduleRoutes,
 ];
 export { routes, publicRoutes };

@@ -72,8 +72,8 @@ const SidebarMember = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         <NavLink to="/">
           <div className="flex items-center justify-center">
             <h1 className="font-bold text-4xl">
-              <span className="text-white">BOOK</span>
-              <span className="text-secondary">HIVE</span>
+              <span className="text-white">LAB</span>
+              <span className="text-secondary">RADIOLOGY</span>
             </h1>
           </div>
         </NavLink>

@@ -44,7 +44,7 @@ const CardFour = () => {
               data.length
             )}
           </h4>
-          <span className="text-sm font-medium">Member Total</span>
+          <span className="text-sm font-medium">Total Pasien</span>
         </div>
       </div>
     </div>

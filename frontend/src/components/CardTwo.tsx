@@ -44,7 +44,7 @@ const CardTwo = () => {
               data.length
             )}
           </h4>
-          <span className="text-sm font-medium">Book Total</span>
+          <span className="text-sm font-medium">Total Dokter</span>
         </div>
       </div>
     </div>

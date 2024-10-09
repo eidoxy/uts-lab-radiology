@@ -43,7 +43,7 @@ const CardOne = () => {
               data.length
             )}
           </h4>
-          <span className="text-sm font-medium">Borrowing Total</span>
+          <span className="text-sm font-medium">Total Pengunjung</span>
         </div>
       </div>
     </div>

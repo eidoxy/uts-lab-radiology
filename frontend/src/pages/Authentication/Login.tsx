@@ -195,8 +195,8 @@ const Login = (props: any) => {
               to="/"
             >
               <h1 className="text-white font-extrabold text-4xl">
-                <span className="text-white">BOOK</span>
-                <span className="text-secondary">HIVE</span>
+                <span className="text-white">LAB</span>
+                <span className="text-secondary">RADIOLOGY</span>
               </h1>
             </Link>
 

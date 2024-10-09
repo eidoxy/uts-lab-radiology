@@ -5,6 +5,7 @@ import SidebarLinkGroup from './SidebarLinkGroup';
 import Logo from '../images/logo/logo-no-bg.png';
 import iconDashboard from '../images/icons/icon-dashboard.svg';
 import iconBorrowing from '../images/icons/icon-borrowing.svg';
+import iconSchedule from '../images/icons/icon-schedule.svg';
 import iconBook from '../images/icons/icon-book.svg';
 import iconBookDetail from '../images/icons/icon-book-detail.svg';
 import iconStock from '../images/icons/icon-stock.svg';
@@ -81,8 +82,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         <NavLink to="/">
           <div className="flex items-center justify-center">
             <h1 className="font-bold text-4xl">
-              <span className="text-white">BOOK</span>
-              <span className="text-secondary">HIVE</span>
+              <span className="text-white">LAB</span>
+              <span className="text-secondary">RADIOLOGY</span>
             </h1>
           </div>
         </NavLink>
@@ -136,23 +137,23 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               </li>
               {/* <!-- Menu Item Dashboard --> */}
 
-              {/* <!-- Menu Item Borrowing Management --> */}
+              {/* <!-- Menu Request Schedule --> */}
               <li>
                 <NavLink
-                  to="/admin/borrowing-management"
+                  to="/admin/schedule-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes('borrowing-management') &&
+                    pathname.includes('schedule-management') &&
                     'bg-primary-dark dark:bg-meta-4'
                   }`}
                 >
-                  <img src={iconBorrowing} alt="Borrowing" />
-                  Borrowings
+                  <img src={iconSchedule} alt="Schedule" />
+                  Schedule
                 </NavLink>
               </li>
-              {/* <!-- Menu Item Borrowing Management --> */}
+              {/* <!-- Menu Request Schedule --> */}
 
               {/* <!-- Menu Item Book Management --> */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/admin/book-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
@@ -163,11 +164,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <img src={iconBook} alt="Book" />
                   Books
                 </NavLink>
-              </li>
+              </li> */}
               {/* <!-- Menu Item Book Management --> */}
 
               {/* <!-- Menu Item Book Detail Management --> */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/admin/book-detail-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
@@ -178,11 +179,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <img src={iconBookDetail} alt="Book Detail" />
                   Books Detail
                 </NavLink>
-              </li>
+              </li> */}
               {/* <!-- Menu Item Book Detail Management --> */}
 
               {/* <!-- Menu Item Stock Management --> */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/admin/stock-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
@@ -193,11 +194,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <img src={iconStock} alt="Stock" />
                   Stocks
                 </NavLink>
-              </li>
+              </li> */}
               {/* <!-- Menu Item Stock Management --> */}
 
               {/* <!-- Menu Item Category Management --> */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/admin/category-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
@@ -208,11 +209,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <img src={iconCategory} alt="Category" />
                   Categories
                 </NavLink>
-              </li>
+              </li> */}
               {/* <!-- Menu Item Category Management --> */}
 
               {/* <!-- Menu Item Author Management --> */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/admin/author-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
@@ -223,11 +224,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <img src={iconAuthor} alt="Author" />
                   Authors
                 </NavLink>
-              </li>
+              </li> */}
               {/* <!-- Menu Item Author Management --> */}
 
               {/* <!-- Menu Item Publisher Management --> */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/admin/publisher-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
@@ -238,11 +239,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <img src={iconPublisher} alt="Publisher" />
                   Publishers
                 </NavLink>
-              </li>
+              </li> */}
               {/* <!-- Menu Item Publisher Management --> */}
 
               {/* <!-- Menu Item Shelf Management --> */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/admin/shelf-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
@@ -253,11 +254,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <img src={iconShelf} alt="Shelf" />
                   Shelves
                 </NavLink>
-              </li>
+              </li> */}
               {/* <!-- Menu Item Shelf Management --> */}
 
               {/* <!-- Menu Item Shelf Management --> */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/admin/member-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
@@ -268,11 +269,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <img src={iconMember} alt="Member" />
                   Members
                 </NavLink>
-              </li>
+              </li> */}
               {/* <!-- Menu Item Shelf Management --> */}
 
               {/* <!-- Menu Item Admin Management --> */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/admin/admin-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
@@ -283,7 +284,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <img src={iconAdmin} alt="Admin" />
                   Admins
                 </NavLink>
-              </li>
+              </li> */}
               {/* <!-- Menu Item Admin Management --> */}
             </ul>
           </div>

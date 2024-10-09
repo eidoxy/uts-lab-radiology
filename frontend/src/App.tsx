@@ -16,9 +16,9 @@ const DefaultLayoutMember = lazy(
 const AllBooks = lazy(() => import('./pages/AllBooks'));
 const BooksDetail = lazy(() => import('./pages/BooksDetail'));
 
-interface ProtectedRoutesProps {
-  children?: ReactNode;
-}
+// interface ProtectedRoutesProps {
+//   children?: ReactNode;
+// }
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -27,14 +27,14 @@ function App() {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-  const ProtectedRoutes: FC<ProtectedRoutesProps> = ({ children }) => {
-    const token = Cookies.get('token');
-    if (token !== undefined) {
-      return children ? <>{children}</> : <Outlet />;
-    } else {
-      return <Navigate to="/admin/login" />;
-    }
-  };
+  // const ProtectedRoutes: FC<ProtectedRoutesProps> = ({ children }) => {
+  //   const token = Cookies.get('token');
+  //   if (token !== undefined) {
+  //     return children ? <>{children}</> : <Outlet />;
+  //   } else {
+  //     return <Navigate to="/admin/login" />;
+  //   }
+  // };
 
   return loading ? (
     <Loader />

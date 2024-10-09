@@ -11,6 +11,7 @@ import bookRoutes from './book';
 import bookDetailRoutes from './bookDetail';
 import stockRoutes from './stock';
 import borrowingRoutes from './borrowing';
+import scheduleRoutes from './schedule';
 
 const router = Router();
 
@@ -25,6 +26,7 @@ router
   .use('/book', bookRoutes)
   .use('/book-detail', bookDetailRoutes)
   .use('/stock', stockRoutes)
-  .use('/borrowing', borrowingRoutes);
+  .use('/borrowing', borrowingRoutes)
+  .use('/schedule', scheduleRoutes);
 
 export default router;
