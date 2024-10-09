@@ -74,7 +74,7 @@ function App() {
         {/* Admin Routes */}
         <Route path="/admin/login" element={<Login user="admin" />} />
         {/* Protected Routes */}
-        <Route element={<ProtectedRoutes />}>
+        {/* <Route element={<ProtectedRoutes />}> */}
           <Route element={<DefaultLayout />}>
             {routes.map((routes, index) => {
               const { path, component: Component } = routes;
@@ -91,7 +91,7 @@ function App() {
               );
             })}
           </Route>
-        </Route>
+        {/* </Route> */}
         {/* End Protected Routes */}
         {/* End Admin Routes */}
       </Routes>
