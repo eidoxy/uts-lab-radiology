@@ -9,7 +9,7 @@ export function authenticateUser(
   const token = req.cookies.token;
 
   try {
-    const decodedToken = decodeToken<{ role: 'admin' | 'user' }>(token);
+    const decodedToken = decodeToken<{ role: 'admin' | 'pasien' | 'dokter' | 'petugas' }>(token);
 
     if (!decodedToken) {
       return res.status(401).send({
@@ -18,10 +18,10 @@ export function authenticateUser(
       });
     }
 
-    if (decodedToken.role !== 'admin') {
+    if (decodedToken.role !== 'admin' && 'dokter' && 'petugas') {
       return res.status(403).send({
         status: 403,
-        message: 'Forbidden: User is not an admin',
+        message: 'Forbidden: User is not an admin or dokter or petugas',
       });
     }
   } catch (error) {

@@ -14,7 +14,7 @@ export async function loginAdmin(bodyRequest: Admin) {
 
   try {
     const [rows] = await db.query<AdminQueryResult[]>(
-      'SELECT * FROM admins WHERE email = ?',
+      'SELECT * FROM admin WHERE email = ?',
       [bodyRequest.email]
     );
 
@@ -28,23 +28,25 @@ export async function loginAdmin(bodyRequest: Admin) {
 
     // ? : check if the password is correct
     const admin = rows[0];
-    const isPassowrdValid = await compare(
-      bodyRequest.password,
-      admin.password
-    );
 
-    // ? : check if the password is incorrect
-    if (!isPassowrdValid) {
-      return {
-        status: 401,
-        message: 'Incorrect password!',
-      };
-    }
+    // // ? : compare with the hashed password
+    // const isPassowrdValid = await compare(
+    //   bodyRequest.password,
+    //   admin.password
+    // );
+
+    // // ? : check if the password is incorrect
+    // if (!isPassowrdValid) {
+    //   return {
+    //     status: 401,
+    //     message: 'Incorrect password!',
+    //   };
+    // }
 
     // ! : create a token
     const token = createToken({
-      id: admin.id,
-      name: admin.name,
+      id_admin: admin.id_admin,
+      nama_admin: admin.nama_admin,
       email: admin.email,
       role: 'admin',
     });
@@ -54,10 +56,10 @@ export async function loginAdmin(bodyRequest: Admin) {
       status: 200,
       message: 'Login successful',
       payload: {
-        id: admin.id,
-        name: admin.name,
+        id_admin: admin.id_admin,
+        nama_admin: admin.nama_admin,
         email: admin.email,
-        phone: admin.phone,
+        telepon: admin.telepon,
         token: token,
       },
     };
@@ -80,7 +82,7 @@ export async function getAdmins() {
 
   try {
     const [rows] = await db.query<AdminQueryResult[]>(
-      'SELECT * FROM admins'
+      'SELECT * FROM admin'
     );
 
     // ? : check if the admins are found
@@ -96,10 +98,10 @@ export async function getAdmins() {
       status: 200,
       message: 'Admins fetched successfully!',
       payload: rows.map((admin) => ({
-        id: admin.id,
-        name: admin.name,
+        id_admin: admin.id_admin,
+        nama_admin: admin.nama_admin,
         email: admin.email,
-        phone: admin.phone,
+        telepon: admin.telepon,
       })),
     };
   } catch (error) {
@@ -121,7 +123,7 @@ export async function getAdminById(id: number) {
 
   try {
     const [rows] = await db.query<AdminQueryResult[]>(
-      'SELECT * FROM admins WHERE id = ?',
+      'SELECT * FROM admin WHERE id_admin = ?',
       [id]
     );
 
@@ -138,10 +140,10 @@ export async function getAdminById(id: number) {
       status: 200,
       message: 'Admin fetched successfully!',
       payload: {
-        id: rows[0].id,
-        name: rows[0].name,
+        id_admin: rows[0].id_admin,
+        nama_admin: rows[0].nama_admin,
         email: rows[0].email,
-        phone: rows[0].phone,
+        telepon: rows[0].telepon,
       },
     };
   } catch (error) {
@@ -163,7 +165,7 @@ export async function createAdmin(bodyRequest: Admin) {
 
   try {
     const [rowsEmail] = await db.query<AdminQueryResult[]>(
-      'SELECT * FROM admins WHERE email = ?',
+      'SELECT * FROM admin WHERE email = ?',
       [bodyRequest.email]
     );
 
@@ -175,33 +177,32 @@ export async function createAdmin(bodyRequest: Admin) {
       };
     }
 
-    const [rowsPhone] = await db.query<AdminQueryResult[]>(
-      'SELECT * FROM admins WHERE phone = ?',
-      [bodyRequest.phone]
+    const [rowsTelepon] = await db.query<AdminQueryResult[]>(
+      'SELECT * FROM admin WHERE telepon = ?',
+      [bodyRequest.telepon]
     );
 
-    // ? check if the phone number already exists
-    if (rowsPhone.length > 0) {
+    // ? check if the telepon number already exists
+    if (rowsTelepon.length > 0) {
       return {
         status: 409,
-        message: `Admin with phone number ${bodyRequest.phone} already exists`,
+        message: `Admin with telepon number ${bodyRequest.telepon} already exists`,
       };
     }
 
     // ! : hash the password
     const hashedPassword = await bcrypt.hash(bodyRequest.password, 10);
-    bodyRequest.password = hashedPassword;
 
     const [result] = await db.query<ResultSetHeader>(
       `
-        INSERT INTO admins (name, email, password, phone)
+        INSERT INTO admin (nama_admin, email, password, telepon)
         VALUES (?, ?, ?, ?)
       `,
       [
-        bodyRequest.name,
+        bodyRequest.nama_admin,
         bodyRequest.email,
-        bodyRequest.password,
-        bodyRequest.phone,
+        hashedPassword,
+        bodyRequest.telepon,
       ]
     );
 
@@ -215,8 +216,8 @@ export async function createAdmin(bodyRequest: Admin) {
 
     // ! : create a token
     const token = createToken({
-      id: bodyRequest.id,
-      name: bodyRequest.name,
+      id_admin: bodyRequest.id_admin,
+      nama_admin: bodyRequest.nama_admin,
       email: bodyRequest.email,
     });
 
@@ -225,10 +226,10 @@ export async function createAdmin(bodyRequest: Admin) {
       status: 201,
       message: 'Admin created successfully!',
       payload: {
-        id: bodyRequest.id,
-        name: bodyRequest.name,
+        id_admin: bodyRequest.id_admin,
+        nama_admin: bodyRequest.nama_admin,
         email: bodyRequest.email,
-        phone: bodyRequest.phone,
+        telepon: bodyRequest.telepon,
         token,
       },
     };
@@ -251,7 +252,7 @@ export async function updateAdmin(id: number, bodyRequest: Admin) {
 
   try {
     const [rows] = await db.query<AdminQueryResult[]>(
-      'SELECT * FROM admins WHERE id = ?',
+      'SELECT * FROM admin WHERE id_admin = ?',
       [id]
     );
 
@@ -269,18 +270,18 @@ export async function updateAdmin(id: number, bodyRequest: Admin) {
 
     const [result] = await db.query<ResultSetHeader>(
       `
-        UPDATE admins SET
-        name = ?,
+        UPDATE admin SET
+        nama_admin = ?,
         email = ?,
         password = ?,
-        phone = 
-        WHERE id = ?
+        telepon = ?
+        WHERE id_admin = ?
       `,
       [
-        bodyRequest.name,
+        bodyRequest.nama_admin,
         bodyRequest.email,
         bodyRequest.password,
-        bodyRequest.phone,
+        bodyRequest.telepon,
         id,
       ]
     );
@@ -290,10 +291,10 @@ export async function updateAdmin(id: number, bodyRequest: Admin) {
       status: 200,
       message: 'Admin updated successfully!',
       payload: {
-        id: id,
-        name: bodyRequest.name,
+        id_admin: bodyRequest.id_admin,
+        nama_admin: bodyRequest.nama_admin,
         email: bodyRequest.email,
-        phone: bodyRequest.phone,
+        telepon: bodyRequest.telepon,
       },
     };
   } catch (error) {
@@ -315,7 +316,7 @@ export async function deleteAdmin(id: number) {
 
   try {
     const [rows] = await db.query<AdminQueryResult[]>(
-      'SELECT * FROM admins WHERE id = ?',
+      'SELECT * FROM admin WHERE id_admin = ?',
       [id]
     );
 
@@ -328,7 +329,7 @@ export async function deleteAdmin(id: number) {
     }
 
     const [result] = await db.query<ResultSetHeader>(
-      'DELETE FROM admins WHERE id = ?',
+      'DELETE FROM admin WHERE id_admin = ?',
       [id]
     );
 
