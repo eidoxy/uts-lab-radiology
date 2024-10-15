@@ -13,6 +13,7 @@ import stockRoutes from './stock';
 import borrowingRoutes from './borrowing';
 import scheduleRoutes from './schedule';
 import dokterRoutes from './dokter';
+import pasienRoutes from './pasien';
 
 const router = Router();
 
@@ -29,6 +30,7 @@ router
   .use('/stock', stockRoutes)
   .use('/borrowing', borrowingRoutes)
   .use('/schedule', scheduleRoutes)
-  .use('/dokter', dokterRoutes);
+  .use('/dokter', dokterRoutes)
+  .use('/pasien', pasienRoutes);
 
 export default router;
