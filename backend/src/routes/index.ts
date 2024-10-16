@@ -17,6 +17,7 @@ import pasienRoutes from './pasien';
 import petugasRoutes from './petugas';
 import layananRoutes from './layanan';
 import pemeriksaanRoutes from './pemeriksaan';
+import spesimenRoutes from './spesimen';
 
 const router = Router();
 
@@ -37,6 +38,7 @@ router
   .use('/pasien', pasienRoutes)
   .use('/petugas', petugasRoutes)
   .use('/layanan', layananRoutes)
-  .use('/pemeriksaan', pemeriksaanRoutes);
+  .use('/pemeriksaan', pemeriksaanRoutes)
+  .use('/spesimen', spesimenRoutes);
 
 export default router;
