@@ -20,5 +20,5 @@ export interface PetugasQueryResult extends RowDataPacket {
   telepon: string;
   email: string;
   password: string;
-  role: Role;
+  role: string;
 }

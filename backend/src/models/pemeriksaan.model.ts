@@ -36,9 +36,9 @@ export interface PemeriksaanQueryResult extends RowDataPacket {
   id_dokter: number;
   id_spesimen?: number;
   id_layanan: number;
-  jenis_pemeriksaan: JenisPemeriksaan;
+  jenis_pemeriksaan: string;
   tanggal_permintaan: Date;
-  prioritas: Prioritas;
-  status_permintaan: StatusPermintaan;
+  prioritas: string;
+  status_permintaan: string;
   catatan_dokter?: string;
 }

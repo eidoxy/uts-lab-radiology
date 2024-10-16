@@ -9,39 +9,39 @@ const DropdownUser = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
-  const trigger = useRef<unknown>(null);
-  const dropdown = useRef<unknown>(null);
+  const trigger = useRef<HTMLAnchorElement>(null);
+  const dropdown = useRef<HTMLDivElement>(null);
 
   const user = JSON.parse(localStorage.getItem('user'));
-  const userId: number = user ? user.id : 0;
+  const userId: number = user ? user.id_admin : 0;
 
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     if (!userId) {
-  //       return navigate('/admin/login');
-  //     }
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (!userId) {
+        return navigate('/admin/login');
+      }
 
-  //     try {
-  //       const response = await axios.get(
-  //         `http://localhost:3000/api/admin/${userId}`
-  //       );
-  //       if (response.status === 200) {
-  //         setUserData(response.data.payload);
-  //         setLoading(false);
-  //       }
-  //     } catch (error) {
-  //       console.error('Error fetching user:', error);
-  //     }
-  //   };
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/api/admin/${userId}`
+        );
+        if (response.status === 200) {
+          setUserData(response.data.payload);
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      }
+    };
 
-  //   fetchUser();
-  // }, [navigate, userId]);
+    fetchUser();
+  }, [navigate, userId]);
 
-  // const logout = () => {
-  //   Cookies.remove('token');
-  //   localStorage.removeItem('user');
-  //   navigate('/admin/login');
-  // };
+  const logout = () => {
+    Cookies.remove('token');
+    localStorage.removeItem('user');
+    navigate('/admin/login');
+  };
 
   return (
     <div className="relative">
@@ -59,7 +59,7 @@ const DropdownUser = () => {
           <>
             <span className="hidden text-right lg:block">
               <span className="block text-sm font-medium text-black dark:text-white">
-                {userData.name}
+                {userData.nama_admin}
               </span>
             </span>
 
@@ -134,6 +134,7 @@ const DropdownUser = () => {
         </ul>
         <button
           className="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-danger lg:text-base"
+          onClick={logout}
         >
           <svg
             className="fill-current"

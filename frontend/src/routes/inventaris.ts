@@ -12,17 +12,17 @@ const FormEditInventaris = lazy(
 
 const coreRoutes = [
   {
-    path: "/admin/Inventaris-management",
+    path: "/admin/inventaris-management",
     title: "Inventaris Management",
     component: InventarisManagement,
   },
   {
-    path: "/admin/Inventaris-management/create",
+    path: "/admin/inventaris-management/create",
     title: "Create Inventaris",
     component: FormCreateInventaris,
   },
   {
-    path: "/admin/Inventaris-management/edit/:id",
+    path: "/admin/inventaris-management/edit/:id",
     title: "Edit Inventaris",
     component: FormEditInventaris,
   },

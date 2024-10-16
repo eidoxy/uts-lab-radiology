@@ -12,17 +12,17 @@ const FormEditSpesimen = lazy(
 
 const coreRoutes = [
   {
-    path: "/admin/Spesimen-management",
+    path: "/admin/spesimen-management",
     title: "Spesimen Management",
     component: SpesimenManagement,
   },
   {
-    path: "/admin/Spesimen-management/create",
+    path: "/admin/spesimen-management/create",
     title: "Create Spesimen",
     component: FormCreateSpesimen,
   },
   {
-    path: "/admin/Spesimen-management/edit/:id",
+    path: "/admin/spesimen-management/edit/:id",
     title: "Edit Spesimen",
     component: FormEditSpesimen,
   },

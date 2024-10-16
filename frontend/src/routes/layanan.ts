@@ -12,17 +12,17 @@ const FormEditLayanan = lazy(
 
 const coreRoutes = [
   {
-    path: "/admin/Layanan-management",
+    path: "/admin/layanan-management",
     title: "Layanan Management",
     component: LayananManagement,
   },
   {
-    path: "/admin/Layanan-management/create",
+    path: "/admin/layanan-management/create",
     title: "Create Layanan",
     component: FormCreateLayanan,
   },
   {
-    path: "/admin/Layanan-management/edit/:id",
+    path: "/admin/layanan-management/edit/:id",
     title: "Edit Layanan",
     component: FormEditLayanan,
   },

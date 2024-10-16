@@ -1,5 +1,5 @@
 import Breadcrumb from "../../../components/Breadcrumb";
-import AdminTable from "../../../components/Table/AdminTable";
+import PemeriksaanTable from "../../../components/Table/PemeriksaanTable";
 
 const PemeriksaanManagement = () => {
   return (
@@ -7,7 +7,7 @@ const PemeriksaanManagement = () => {
       <Breadcrumb pageName="Pemeriksaan Management" />
 
       <div className="flex flex-col gap-10">
-        <AdminTable />
+        <PemeriksaanTable />
       </div>
     </>
   );

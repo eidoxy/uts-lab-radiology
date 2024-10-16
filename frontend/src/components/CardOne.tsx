@@ -8,7 +8,7 @@ const CardOne = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('http://localhost:3000/api/borrowing');
+        const res = await axios.get('http://localhost:3000/api/layanan');
         setData(res.data.payload);
         setLoading(false);
       } catch (error) {
@@ -36,14 +36,14 @@ const CardOne = () => {
         <div>
           <h4 className="text-title-md font-bold text-black dark:text-white">
             {loading ? (
-              <div className="flex h-full items-center justify-center bg-white dark:bg-boxdark">
-                <div className="h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"></div>
+              <div className="flex h-full bg-white dark:bg-boxdark">
+                <div className="h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"></div>
               </div>
             ) : (
               data.length
             )}
           </h4>
-          <span className="text-sm font-medium">Total Pengunjung</span>
+          <span className="text-sm font-medium">Total Layanan</span>
         </div>
       </div>
     </div>

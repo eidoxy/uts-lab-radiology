@@ -19,7 +19,7 @@ const HomePage = () => {
                 href="index.html"
                 className="text-white font-bold text-2xl"
               >
-                Lan&Radiology
+                Radiolabs
               </a>
             </div>
             <label
@@ -105,6 +105,7 @@ const HomePage = () => {
               <img
                 src={cover}
                 className="w-full h-full object-cover opacity-20"
+                loading="lazy"
               />
             </div>
             <div className="lg:w-3/4 xl:w-2/4 relative z-10 h-100 lg:mt-16">
@@ -187,7 +188,7 @@ const HomePage = () => {
           <div className="md:flex md:flex-wrap mt-24 text-center md:-mx-4">
             <div className="md:w-1/2 md:px-4 lg:w-1/4">
               <div className="bg-white rounded-lg border border-gray-300 p-8">
-                <img src={imgCard1} className="bg-cover" />
+                <img src={imgCard1} className="bg-cover" loading="lazy" />
                 <h4 className="text-xl font-bold mt-4">
                   Laboratory Testing
                 </h4>
@@ -202,7 +203,7 @@ const HomePage = () => {
             </div>
             <div className="md:w-1/2 md:px-4 mt-4 md:mt-0 lg:w-1/4">
               <div className="bg-white rounded-lg border border-gray-300 p-8">
-                <img src={imgCard2} className="bg-cover" />
+                <img src={imgCard2} className="bg-cover" loading="lazy" />
                 <h4 className="text-xl font-bold mt-4">
                   Radiology Services
                 </h4>
@@ -217,7 +218,7 @@ const HomePage = () => {
             </div>
             <div className="md:w-1/2 md:px-4 mt-4 md:mt-8 lg:mt-0 lg:w-1/4">
               <div className="bg-white rounded-lg border border-gray-300 p-8">
-                <img src={imgCard3} className="bg-cover" />
+                <img src={imgCard3} className="bg-cover" loading="lazy" />
                 <h4 className="text-xl font-bold mt-4">
                   Minimally Invasive
                 </h4>
@@ -233,7 +234,7 @@ const HomePage = () => {
             </div>
             <div className="md:w-1/2 md:px-4 mt-4 md:mt-8 lg:mt-0 lg:w-1/4">
               <div className="bg-white rounded-lg border border-gray-300 p-8">
-                <img src={imgCard4} className="bg-cover" />
+                <img src={imgCard4} className="bg-cover" loading="lazy" />
                 <h4 className="text-xl font-bold mt-4">
                   Diagnostic Services
                 </h4>

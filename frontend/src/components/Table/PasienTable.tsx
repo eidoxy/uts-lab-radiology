@@ -4,10 +4,10 @@ import ReactPaginate from 'react-paginate';
 import axios from 'axios';
 
 import Loader from '../../common/Loader';
-import { Schedule } from '../../models/schedule.model';
+import { Pasien } from '../../models/pasien.model';
 
-const ScheduleTable = () => {
-  const [data, setData] = useState<Schedule[]>([]);
+const PasienTable = () => {
+  const [data, setData] = useState<Pasien[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [itemOffset, setItemOffset] = useState(0);
 
@@ -17,37 +17,26 @@ const ScheduleTable = () => {
   const pageCount = Math.ceil(data.length / itemsPerPage);
   let currentPage = itemOffset / itemsPerPage;
 
-  const formatDate = (date: string) => {
-    const newDate = new Date(date);
-    return newDate.toLocaleDateString('en-GB', {
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric',
-    });
-  };
-
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
   useEffect(() => {
-    const fetchSchedules = async () => {
+    const fetchPasien = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:3000/api/schedule'
+          'http://localhost:3000/api/pasien'
         );
-
-        console.log('response: ', response.data.payload);
 
         if (response.status === 200) {
           setData(response.data.payload);
         }
       } catch (error) {
-        console.error('Error fetching categories:', error);
+        console.error('Error fetching pasien:', error);
       }
     };
 
-    fetchSchedules();
+    fetchPasien();
   }, []);
 
   // Invoke when user click to request another page.
@@ -62,17 +51,15 @@ const ScheduleTable = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/category/delete/${id}`
+        `http://localhost:3000/api/pasien/delete/${id}`
       );
 
       if (response.status === 200) {
-        const updatedData = data.filter(
-          (item: Category) => item.id !== id
-        );
+        const updatedData = data.filter((item: Pasien) => item.id_pasien !== id);
         setData(updatedData);
       }
     } catch (error) {
-      console.error('Error deleting category:', error);
+      console.error('Error deleting pasien:', error);
     }
   };
 
@@ -85,8 +72,8 @@ const ScheduleTable = () => {
           </h3>
 
           <NavLink
-            to="/admin/schedule-management/create"
-            className={`group max-h-12 rounded-full flex items-center gap-2.5 py-2 px-6 font-medium text-white duration-300 ease-in-out bg-primary hover:bg-primary-dark dark:hover:bg-primarydark`}
+            to="/admin/pasien-management/create"
+            className={`group max-h-12 rounded-full flex items-center gap-2.5 py-2 px-6 font-medium text-white duration-300 ease-in-out bg-primary hover:bg-primarydark dark:hover:bg-primarydark`}
           >
             + Tambah
           </NavLink>
@@ -107,32 +94,17 @@ const ScheduleTable = () => {
                   </th>
                   <th className="min-w-[220px] py-4 px-4 xl:px-8 xl:py-6">
                     <h5 className="text-sm font-medium uppercase xsm:text-base">
-                      Pasien
+                      Name
                     </h5>
                   </th>
                   <th className="min-w-[220px] py-4 px-4 xl:px-8 xl:py-6">
                     <h5 className="text-sm font-medium uppercase xsm:text-base">
-                      Dokter
+                      Email
                     </h5>
                   </th>
-                  <th className="min-w-[220px] py-4 px-4 xl:px-8 xl:py-6">
+                  <th className="min-w-[150px] py-4 px-4 xl:px-8 xl:py-6">
                     <h5 className="text-sm font-medium uppercase xsm:text-base">
-                      Ruangan
-                    </h5>
-                  </th>
-                  <th className="min-w-[220px] py-4 px-4 xl:px-8 xl:py-6">
-                    <h5 className="text-sm font-medium uppercase xsm:text-base">
-                      Status
-                    </h5>
-                  </th>
-                  <th className="min-w-[220px] py-4 px-4 xl:px-8 xl:py-6">
-                    <h5 className="text-sm font-medium uppercase xsm:text-base">
-                      Tanggal
-                    </h5>
-                  </th>
-                  <th className="min-w-[220px] py-4 px-4 xl:px-8 xl:py-6">
-                    <h5 className="text-sm font-medium uppercase xsm:text-base">
-                      Petugas
+                      Phone
                     </h5>
                   </th>
                   <th className="py-4 px-4 xl:px-8 xl:py-6">
@@ -143,41 +115,26 @@ const ScheduleTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {currentItems.map((items: Schedule, id: number) => (
+                {currentItems.map((items: Pasien, id: number) => (
                   <tr key={id}>
                     <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
                       <p className="text-black dark:text-white">
                         {currentPage * itemsPerPage + id + 1}
                       </p>
                     </td>
-                    <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
+                    <td className="max-w-[80px] border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
                       <p className="text-black dark:text-white">
-                        {items.pasien}
+                        {items.nama_lengkap}
                       </p>
                     </td>
-                    <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
-                      <p className="text-black dark:text-white">
-                        {items.dokter}
+                    <td className="max-w-[200px]  border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
+                      <p className="overflow-ellipsis overflow-hidden text-black dark:text-white">
+                        {items.email}
                       </p>
                     </td>
-                    <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
-                      <p className="text-black dark:text-white">
-                        {items.ruangan}
-                      </p>
-                    </td>
-                    <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
-                      <p className="text-black dark:text-white">
-                        {items.status_jadwal}
-                      </p>
-                    </td>
-                    <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
-                      <p className="text-black dark:text-white">
-                        {formatDate(items.waktu_mulai)}
-                      </p>
-                    </td>
-                    <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
-                      <p className="text-black dark:text-white">
-                        {items.petugas}
+                    <td className="max-w-[200px]  border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
+                      <p className="overflow-ellipsis overflow-hidden text-black dark:text-white">
+                        {items.telepon}
                       </p>
                     </td>
                     <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
@@ -197,7 +154,7 @@ const ScheduleTable = () => {
 
                         <button
                           onClick={(event) =>
-                            handleDelete(items.id ?? 0, event)
+                            handleDelete(items.id_pasien ?? 0, event)
                           }
                           className="hover:text-danger transition"
                         >
@@ -239,4 +196,4 @@ const ScheduleTable = () => {
   );
 };
 
-export default ScheduleTable;
+export default PasienTable;

@@ -40,50 +40,6 @@ export async function createScheduleController(
 ) {
   const bodyRequest: Schedule = req.body;
 
-  // ? : check if required fields are present
-  if (!bodyRequest.id_pemeriksaan_lab_dan_radiologi) {
-    return res.status(400).send({
-      status: 400,
-      message: 'ID pemeriksaan lab dan radiologi is required',
-    });
-  }
-  if (!bodyRequest.id_petugas_lab) {
-    return res.status(400).send({
-      status: 400,
-      message: 'ID petugas lab is required',
-    });
-  }
-  if (!bodyRequest.id_dokter) {
-    return res.status(400).send({
-      status: 400,
-      message: 'ID dokter is required',
-    });
-  }
-  if (!bodyRequest.waktu_mulai) {
-    return res.status(400).send({
-      status: 400,
-      message: 'Waktu mulai is required',
-    });
-  }
-  if (!bodyRequest.waktu_selesai) {
-    return res.status(400).send({
-      status: 400,
-      message: 'Waktu selesai is required',
-    });
-  }
-  if (!bodyRequest.ruangan) {
-    return res.status(400).send({
-      status: 400,
-      message: 'Ruangan is required',
-    });
-  }
-  if (!bodyRequest.status_jadwal) {
-    return res.status(400).send({
-      status: 400,
-      message: 'Status jadwal is required',
-    });
-  }
-
   try {
     const result = await createSchedule(bodyRequest);
 

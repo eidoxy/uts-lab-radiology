@@ -37,8 +37,8 @@ const CardThree = () => {
         <div>
           <h4 className="text-title-md font-bold text-black dark:text-white">
             {loading ? (
-              <div className="flex h-full items-center justify-center bg-white dark:bg-boxdark">
-                <div className="h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"></div>
+              <div className="flex h-full bg-white dark:bg-boxdark">
+                <div className="h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"></div>
               </div>
             ) : (
               data.length

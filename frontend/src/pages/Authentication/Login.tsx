@@ -2,7 +2,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, ChangeEvent } from 'react';
 import axios from 'axios';
 
-import Logo from '../../images/logo/logo-no-bg.png';
 import Illustration from '../../images/illustrations/auth.svg';
 
 axios.defaults.withCredentials = true;
@@ -41,8 +40,8 @@ const Login = (props: any) => {
 
         if (response.status === 200) {
           const data = {
-            id: response.data.payload.id,
-            name: response.data.payload.name,
+            id_admin: response.data.payload.id_admin,
+            nama_admin: response.data.payload.nama_admin,
             email: response.data.payload.email,
           };
 
@@ -55,17 +54,63 @@ const Login = (props: any) => {
       } catch (error) {
         setError('An error occurred while logging in.');
       }
-    } else {
+    } else if (props.user === 'dokter') {
       try {
         const response = await axios.post(
-          'http://localhost:3000/api/member/login',
+          'http://localhost:3000/api/dokter/login',
           inputValue
         );
 
         if (response.status === 200) {
           const data = {
-            id: response.data.payload.id,
-            name: response.data.payload.name,
+            id_dokter: response.data.payload.id_dokter,
+            nama_dokter: response.data.payload.nama_dokter,
+            email: response.data.payload.email,
+          };
+
+          localStorage.setItem('user', JSON.stringify(data));
+          setError(null);
+          return navigate('/profile');
+        } else {
+          setError('An error occurred while logging in.');
+        }
+      } catch (error) {
+        setError('An error occurred while logging in.');
+      }
+    } else if (props.user === 'petugas') {
+      try {
+        const response = await axios.post(
+          'http://localhost:3000/api/petugas/login',
+          inputValue
+        );
+
+        if (response.status === 200) {
+          const data = {
+            id_petugas: response.data.payload.id_petugas,
+            nama_petugas: response.data.payload.nama_petugas,
+            email: response.data.payload.email,
+          };
+
+          localStorage.setItem('user', JSON.stringify(data));
+          setError(null);
+          return navigate('/profile');
+        } else {
+          setError('An error occurred while logging in.');
+        }
+      } catch (error) {
+        setError('An error occurred while logging in.');
+      }
+    } else if (props.user === 'pasien') {
+      try {
+        const response = await axios.post(
+          'http://localhost:3000/api/pasien/login',
+          inputValue
+        );
+
+        if (response.status === 200) {
+          const data = {
+            id_pasien: response.data.payload.id_pasien,
+            nama_panggilan: response.data.payload.nama_panggilan,
             email: response.data.payload.email,
           };
 
@@ -89,7 +134,9 @@ const Login = (props: any) => {
             <div className="px-4 xl:px-25 sm:px-25 lg:px-50">
               <h2 className="mb-1.5 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                 {props.user === 'admin' && 'Login Admin'}
-                {props.user !== 'admin' && 'Login'}
+                {props.user === 'dokter' && 'Login Dokter'}
+                {props.user === 'petugas' && 'Login Petugas'}
+                {props.user === 'pasien' && 'Login Pasien'}
               </h2>
               <span className="mb-9 block font-medium">
                 Welcome back, please login to your account.
@@ -172,20 +219,6 @@ const Login = (props: any) => {
                 </button>
               </div>
             </form>
-
-            {props.user !== 'admin' && (
-              <div className="px-4 xl:px-25 sm:px-25 lg:px-50">
-                <span className="block text-center">
-                  Don't have an account?{' '}
-                  <Link
-                    to="/register"
-                    className="text-primary hover:underline dark:text-primarydark"
-                  >
-                    Register
-                  </Link>
-                </span>
-              </div>
-            )}
           </div>
         </div>
         <div className="hidden w-full h-full xl:block xl:w-1/2 bg-color-white bg-primary">
@@ -195,8 +228,7 @@ const Login = (props: any) => {
               to="/"
             >
               <h1 className="text-white font-extrabold text-4xl">
-                <span className="text-white">LAB</span>
-                <span className="text-secondary">RADIOLOGY</span>
+                <span className="text-white">RADIOLABS</span>
               </h1>
             </Link>
 

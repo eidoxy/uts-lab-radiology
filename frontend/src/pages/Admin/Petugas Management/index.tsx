@@ -1,5 +1,5 @@
 import Breadcrumb from "../../../components/Breadcrumb";
-import AdminTable from "../../../components/Table/AdminTable";
+import PetugasTable from "../../../components/Table/PetugasTable";
 
 const PetugasManagement = () => {
   return (
@@ -7,7 +7,7 @@ const PetugasManagement = () => {
       <Breadcrumb pageName="Petugas Management" />
 
       <div className="flex flex-col gap-10">
-        <AdminTable />
+        <PetugasTable />
       </div>
     </>
   );

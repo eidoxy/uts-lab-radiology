@@ -12,17 +12,17 @@ const FormEditHasil = lazy(
 
 const coreRoutes = [
   {
-    path: "/admin/Hasil-pemeriksaan-management",
+    path: "/admin/hasil-pemeriksaan-management",
     title: "Hasil Pemeriksaan",
     component: HasilManagement,
   },
   {
-    path: "/admin/Hasil-pemeriksaan-management/create",
+    path: "/admin/hasil-pemeriksaan-management/create",
     title: "Create Hasil Pemeriksaan",
     component: FormCreateHasil,
   },
   {
-    path: "/admin/Hasil-pemeriksaan-management/edit/:id",
+    path: "/admin/hasil-pemeriksaan-management/edit/:id",
     title: "Edit Hasil Pemeriksaan",
     component: FormEditHasil,
   },

@@ -12,22 +12,19 @@ export async function getSchedules() {
   try {
     const [rows] = await db.query<ScheduleQueryResult[]>(`
       SELECT 
-        jp.id_jadwal,
-        jp.waktu_mulai,
-        jp.waktu_selesai,
-        jp.ruangan,
-        jp.status_jadwal,
-        p.nama_lengkap AS pasien,
-        d.Nama_Dokter AS dokter,
-        pl.nama_petugas_lab AS petugas_lab
-      FROM 
-        jadwal_pemeriksaan jp
-      JOIN 
-        pasien p ON jp.id_pasien = p.ID_Pasien
-      JOIN 
-        dokter d ON jp.id_dokter = d.ID_Dokter
-      JOIN 
-        petugas_lab pl ON jp.id_petugas_lab = pl.id_petugas_lab
+        jadwal_pemeriksaan.id_jadwal,
+        jadwal_pemeriksaan.waktu_mulai,
+        jadwal_pemeriksaan.waktu_selesai,
+        jadwal_pemeriksaan.ruangan,
+        jadwal_pemeriksaan.status_jadwal,
+        pasien.nama_lengkap as pasien,
+        dokter.nama_dokter as dokter,
+        petugas.nama_petugas as petugas
+      FROM jadwal_pemeriksaan
+      JOIN pemeriksaan ON jadwal_pemeriksaan.id_pemeriksaan = pemeriksaan.id_pemeriksaan
+      JOIN pasien ON pemeriksaan.id_pasien = pasien.id_pasien
+      JOIN dokter ON jadwal_pemeriksaan.id_dokter = dokter.id_dokter
+      JOIN petugas ON jadwal_pemeriksaan.id_petugas = petugas.id_petugas
     `);
 
     // ? : check if there are no schedules
@@ -64,27 +61,19 @@ export async function createSchedule(bodyRequest: Schedule) {
   try {
     const [result] = await db.query<ResultSetHeader>(
       `
-    INSERT INTO jadwal_pemeriksaan ( 
-      id_pemeriksaan_lab_dan_radiologi, 
-      id_petugas_lab, 
-      id_dokter, 
-      waktu_mulai, 
-      waktu_selesai, 
-      ruangan, 
-      status_jadwal,
-      id_pasien
-    ) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO jadwal_pemeriksaan
+      (id_pemeriksaan, id_petugas, id_dokter, waktu_mulai, waktu_selesai, ruangan, status_jadwal)
+      VALUES
+      (?, ?, ?, ?, ?, ?, ?)
   `,
       [
-        bodyRequest.id_pemeriksaan_lab_dan_radiologi,
-        bodyRequest.id_petugas_lab,
+        bodyRequest.id_pemeriksaan,
+        bodyRequest.id_petugas,
         bodyRequest.id_dokter,
         bodyRequest.waktu_mulai,
         bodyRequest.waktu_selesai,
         bodyRequest.ruangan,
-        bodyRequest.status_jadwal,
-        bodyRequest.id_pasien,
+        bodyRequest.status_jadwal
       ]
     );
 
@@ -101,7 +90,6 @@ export async function createSchedule(bodyRequest: Schedule) {
       status: 201,
       message: 'Schedule created successfully!',
       payload: {
-        id_jadwal: result.insertId, // Ambil ID jadwal yang baru saja ditambahkan
         ...bodyRequest,
       },
     };

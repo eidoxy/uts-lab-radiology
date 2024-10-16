@@ -12,17 +12,17 @@ const FormEditPemeriksaan = lazy(
 
 const coreRoutes = [
   {
-    path: "/admin/Pemeriksaan-management",
+    path: "/admin/pemeriksaan-management",
     title: "Pemeriksaan Management",
     component: PemeriksaanManagement,
   },
   {
-    path: "/admin/Pemeriksaan-management/create",
+    path: "/admin/pemeriksaan-management/create",
     title: "Create Pemeriksaan",
     component: FormCreatePemeriksaan,
   },
   {
-    path: "/admin/Pemeriksaan-management/edit/:id",
+    path: "/admin/pemeriksaan-management/edit/:id",
     title: "Edit Pemeriksaan",
     component: FormEditPemeriksaan,
   },

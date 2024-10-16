@@ -2,19 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import SidebarLinkGroup from "./SidebarLinkGroup";
 
-import Logo from "../images/logo/logo-no-bg.png";
 import iconDashboard from "../images/icons/icon-dashboard.svg";
-import iconBorrowing from "../images/icons/icon-borrowing.svg";
 import iconSchedule from "../images/icons/icon-schedule.svg";
-import iconBook from "../images/icons/icon-book.svg";
-import iconBookDetail from "../images/icons/icon-book-detail.svg";
-import iconStock from "../images/icons/icon-stock.svg";
-import iconCategory from "../images/icons/icon-category.svg";
-import iconAuthor from "../images/icons/icon-author.svg";
-import iconPublisher from "../images/icons/icon-publisher.svg";
-import iconShelf from "../images/icons/icon-shelf.svg";
-import iconAdmin from "../images/icons/icon-admin.svg";
-import iconMember from "../images/icons/icon-member.svg";
+import iconCalendar from "../images/icons/icon-calendar.svg";
+import iconDokter from "../images/icons/icon-dokter.svg";
+import iconLayanan from "../images/icons/icon-layanan.svg";
+import iconPasien from "../images/icons/icon-pasien.svg";
+import iconPetugas from "../images/icons/icon-petugas.svg";
+import iconSpesimen from "../images/icons/icon-spesimen.svg";
+import iconPemeriksaan from "../images/icons/icon-pemeriksaan.svg";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -82,8 +78,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         <NavLink to="/">
           <div className="flex items-center justify-center">
             <h1 className="font-bold text-4xl">
-              <span className="text-white">LAB</span>
-              <span className="text-secondary">RADIOLOGY</span>
+              <span className="text-white">RADIOLABS</span>
             </h1>
           </div>
         </NavLink>
@@ -146,13 +141,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     "bg-primary-dark dark:bg-meta-4"
                   }`}
                 >
-                  <img src={iconSchedule} alt="Schedule" />
+                  <img src={iconCalendar} alt="Schedule" />
                   Schedule
                 </NavLink>
               </li>
               {/* <!-- Menu Request Schedule --> */}
 
-              {/* <!-- Menu Request Schedule --> */}
+              {/* <!-- Menu Pasien --> */}
               <li>
                 <NavLink
                   to="/admin/pasien-management"
@@ -161,59 +156,59 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     "bg-primary-dark dark:bg-meta-4"
                   }`}
                 >
-                  <img src={iconSchedule} alt="Pasien" />
+                  <img src={iconPasien} alt="Pasien" />
                   Pasien
                 </NavLink>
               </li>
-              {/* <!-- Menu Request Schedule --> */}
+              {/* <!-- Menu Pasien --> */}
 
-              {/* <!-- Menu Request Schedule --> */}
+              {/* <!-- Menu Petugas --> */}
               <li>
                 <NavLink
-                  to="/admin/Petugas-management"
+                  to="/admin/petugas-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
                     pathname.includes("petugas-management") &&
                     "bg-primary-dark dark:bg-meta-4"
                   }`}
                 >
-                  <img src={iconSchedule} alt="Petugas" />
+                  <img src={iconPetugas} alt="Petugas" />
                   Petugas
                 </NavLink>
               </li>
-              {/* <!-- Menu Request Schedule --> */}
+              {/* <!-- Menu Petugas --> */}
 
-              {/* <!-- Menu Request Schedule --> */}
+              {/* <!-- Menu Dokter --> */}
               <li>
                 <NavLink
-                  to="/admin/Dokter-management"
+                  to="/admin/dokter-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes("Dokter-management") &&
+                    pathname.includes("dokter-management") &&
                     "bg-primary-dark dark:bg-meta-4"
                   }`}
                 >
-                  <img src={iconSchedule} alt="Dokter" />
+                  <img src={iconDokter} alt="Dokter" />
                   Dokter
                 </NavLink>
               </li>
-              {/* <!-- Menu Request Schedule --> */}
+              {/* <!-- Menu Dokter --> */}
 
-              {/* <!-- Menu Request Schedule --> */}
+              {/* <!-- Menu Pemeriksaan --> */}
               <li>
                 <NavLink
-                  to="/admin/Pemeriksaan-management"
+                  to="/admin/pemeriksaan-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
                     pathname.includes("pemeriksaan-management") &&
                     "bg-primary-dark dark:bg-meta-4"
                   }`}
                 >
-                  <img src={iconSchedule} alt="Jadwal" />
+                  <img src={iconPemeriksaan} alt="Jadwal" />
                   Pemeriksaan
                 </NavLink>
               </li>
-              {/* <!-- Menu Request Schedule --> */}
+              {/* <!-- Menu Pemeriksaan --> */}
 
               {/* <!-- Menu Request Schedule --> */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/admin/Hasil-Pemeriksaan-Management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
@@ -224,41 +219,41 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <img src={iconSchedule} alt="Hasil Pemeriksaan" />
                   Hasil Pemeriksaan
                 </NavLink>
-              </li>
+              </li> */}
               {/* <!-- Menu Request Schedule --> */}
 
-              {/* <!-- Menu Request Schedule --> */}
+              {/* <!-- Menu Spesimen --> */}
               <li>
                 <NavLink
-                  to="/admin/Spesimen-management"
+                  to="/admin/spesimen-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes("Spesimen-management") &&
+                    pathname.includes("spesimen-management") &&
                     "bg-primary-dark dark:bg-meta-4"
                   }`}
                 >
-                  <img src={iconSchedule} alt="Spesimen" />
+                  <img src={iconSpesimen} alt="Spesimen" />
                   Spesimen
                 </NavLink>
               </li>
-              {/* <!-- Menu Request Schedule --> */}
+              {/* <!-- Menu Spesimen --> */}
 
-              {/* <!-- Menu Request Schedule --> */}
+              {/* <!-- Menu Layanan --> */}
               <li>
                 <NavLink
-                  to="/admin/Layanan-management"
+                  to="/admin/layanan-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes("Layanan-management") &&
+                    pathname.includes("layanan-management") &&
                     "bg-primary-dark dark:bg-meta-4"
                   }`}
                 >
-                  <img src={iconSchedule} alt="Layanan" />
+                  <img src={iconLayanan} alt="Layanan" />
                   Layanan
                 </NavLink>
               </li>
-              {/* <!-- Menu Request Schedule --> */}
+              {/* <!-- Menu Layanan --> */}
 
               {/* <!-- Menu Request Schedule --> */}
-              <li>
+              {/* <li>
                 <NavLink
                   to="/admin/Inventaris-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
@@ -269,143 +264,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   <img src={iconSchedule} alt="Inventaris" />
                   Inventaris
                 </NavLink>
-              </li>
+              </li> */}
               {/* <!-- Menu Request Schedule --> */}
-
-              {/* <!-- Menu Item Book Management --> */}
-              {/* <li>
-                <NavLink
-                  to="/admin/book-management"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes('book-management') &&
-                    'bg-primary-dark dark:bg-meta-4'
-                  }`}
-                >
-                  <img src={iconBook} alt="Book" />
-                  Books
-                </NavLink>
-              </li> */}
-              {/* <!-- Menu Item Book Management --> */}
-
-              {/* <!-- Menu Item Book Detail Management --> */}
-              {/* <li>
-                <NavLink
-                  to="/admin/book-detail-management"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes('book-detail-management') &&
-                    'bg-primary-dark dark:bg-meta-4'
-                  }`}
-                >
-                  <img src={iconBookDetail} alt="Book Detail" />
-                  Books Detail
-                </NavLink>
-              </li> */}
-              {/* <!-- Menu Item Book Detail Management --> */}
-
-              {/* <!-- Menu Item Stock Management --> */}
-              {/* <li>
-                <NavLink
-                  to="/admin/stock-management"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes('stock-management') &&
-                    'bg-primary-dark dark:bg-meta-4'
-                  }`}
-                >
-                  <img src={iconStock} alt="Stock" />
-                  Stocks
-                </NavLink>
-              </li> */}
-              {/* <!-- Menu Item Stock Management --> */}
-
-              {/* <!-- Menu Item Category Management --> */}
-              {/* <li>
-                <NavLink
-                  to="/admin/category-management"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes('category-management') &&
-                    'bg-primary-dark dark:bg-meta-4'
-                  }`}
-                >
-                  <img src={iconCategory} alt="Category" />
-                  Categories
-                </NavLink>
-              </li> */}
-              {/* <!-- Menu Item Category Management --> */}
-
-              {/* <!-- Menu Item Author Management --> */}
-              {/* <li>
-                <NavLink
-                  to="/admin/author-management"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes('author-management') &&
-                    'bg-primary-dark dark:bg-meta-4'
-                  }`}
-                >
-                  <img src={iconAuthor} alt="Author" />
-                  Authors
-                </NavLink>
-              </li> */}
-              {/* <!-- Menu Item Author Management --> */}
-
-              {/* <!-- Menu Item Publisher Management --> */}
-              {/* <li>
-                <NavLink
-                  to="/admin/publisher-management"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes('publisher-management') &&
-                    'bg-primary-dark dark:bg-meta-4'
-                  }`}
-                >
-                  <img src={iconPublisher} alt="Publisher" />
-                  Publishers
-                </NavLink>
-              </li> */}
-              {/* <!-- Menu Item Publisher Management --> */}
-
-              {/* <!-- Menu Item Shelf Management --> */}
-              {/* <li>
-                <NavLink
-                  to="/admin/shelf-management"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes('shelf-management') &&
-                    'bg-primary-dark dark:bg-meta-4'
-                  }`}
-                >
-                  <img src={iconShelf} alt="Shelf" />
-                  Shelves
-                </NavLink>
-              </li> */}
-              {/* <!-- Menu Item Shelf Management --> */}
-
-              {/* <!-- Menu Item Shelf Management --> */}
-              {/* <li>
-                <NavLink
-                  to="/admin/member-management"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes('member-management') &&
-                    'bg-primary-dark dark:bg-meta-4'
-                  }`}
-                >
-                  <img src={iconMember} alt="Member" />
-                  Members
-                </NavLink>
-              </li> */}
-              {/* <!-- Menu Item Shelf Management --> */}
-
-              {/* <!-- Menu Item Admin Management --> */}
-              {/* <li>
-                <NavLink
-                  to="/admin/admin-management"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes('admin-management') &&
-                    'bg-primary-dark dark:bg-meta-4'
-                  }`}
-                >
-                  <img src={iconAdmin} alt="Admin" />
-                  Admins
-                </NavLink>
-              </li> */}
-              {/* <!-- Menu Item Admin Management --> */}
             </ul>
           </div>
         </nav>
