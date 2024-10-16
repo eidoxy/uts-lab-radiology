@@ -1,20 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import SidebarLinkGroup from './SidebarLinkGroup';
+import React, { useEffect, useRef, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import SidebarLinkGroup from "./SidebarLinkGroup";
 
-import Logo from '../images/logo/logo-no-bg.png';
-import iconDashboard from '../images/icons/icon-dashboard.svg';
-import iconBorrowing from '../images/icons/icon-borrowing.svg';
-import iconSchedule from '../images/icons/icon-schedule.svg';
-import iconBook from '../images/icons/icon-book.svg';
-import iconBookDetail from '../images/icons/icon-book-detail.svg';
-import iconStock from '../images/icons/icon-stock.svg';
-import iconCategory from '../images/icons/icon-category.svg';
-import iconAuthor from '../images/icons/icon-author.svg';
-import iconPublisher from '../images/icons/icon-publisher.svg';
-import iconShelf from '../images/icons/icon-shelf.svg';
-import iconAdmin from '../images/icons/icon-admin.svg';
-import iconMember from '../images/icons/icon-member.svg';
+import Logo from "../images/logo/logo-no-bg.png";
+import iconDashboard from "../images/icons/icon-dashboard.svg";
+import iconBorrowing from "../images/icons/icon-borrowing.svg";
+import iconSchedule from "../images/icons/icon-schedule.svg";
+import iconBook from "../images/icons/icon-book.svg";
+import iconBookDetail from "../images/icons/icon-book-detail.svg";
+import iconStock from "../images/icons/icon-stock.svg";
+import iconCategory from "../images/icons/icon-category.svg";
+import iconAuthor from "../images/icons/icon-author.svg";
+import iconPublisher from "../images/icons/icon-publisher.svg";
+import iconShelf from "../images/icons/icon-shelf.svg";
+import iconAdmin from "../images/icons/icon-admin.svg";
+import iconMember from "../images/icons/icon-member.svg";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -28,11 +28,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const trigger = useRef<any>(null);
   const sidebar = useRef<any>(null);
 
-  const storedSidebarExpanded = localStorage.getItem('sidebar-expanded');
+  const storedSidebarExpanded = localStorage.getItem("sidebar-expanded");
   const [sidebarExpanded, setSidebarExpanded] = useState(
     storedSidebarExpanded === null
       ? false
-      : storedSidebarExpanded === 'true'
+      : storedSidebarExpanded === "true"
   );
 
   // close on click outside
@@ -47,8 +47,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         return;
       setSidebarOpen(false);
     };
-    document.addEventListener('click', clickHandler);
-    return () => document.removeEventListener('click', clickHandler);
+    document.addEventListener("click", clickHandler);
+    return () => document.removeEventListener("click", clickHandler);
   });
 
   // close if the esc key is pressed
@@ -57,16 +57,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       if (!sidebarOpen || keyCode !== 27) return;
       setSidebarOpen(false);
     };
-    document.addEventListener('keydown', keyHandler);
-    return () => document.removeEventListener('keydown', keyHandler);
+    document.addEventListener("keydown", keyHandler);
+    return () => document.removeEventListener("keydown", keyHandler);
   });
 
   useEffect(() => {
-    localStorage.setItem('sidebar-expanded', sidebarExpanded.toString());
+    localStorage.setItem("sidebar-expanded", sidebarExpanded.toString());
     if (sidebarExpanded) {
-      document.querySelector('body')?.classList.add('sidebar-expanded');
+      document.querySelector("body")?.classList.add("sidebar-expanded");
     } else {
-      document.querySelector('body')?.classList.remove('sidebar-expanded');
+      document.querySelector("body")?.classList.remove("sidebar-expanded");
     }
   }, [sidebarExpanded]);
 
@@ -74,7 +74,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
     <aside
       ref={sidebar}
       className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-primary duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${
-        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
       {/* <!-- SIDEBAR HEADER --> */}
@@ -127,8 +127,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="/admin/dashboard"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes('dashboard') &&
-                    'bg-primary-dark dark:bg-meta-4'
+                    pathname.includes("dashboard") &&
+                    "bg-primary-dark dark:bg-meta-4"
                   }`}
                 >
                   <img src={iconDashboard} alt="Dashboard" />
@@ -142,12 +142,132 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="/admin/schedule-management"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes('schedule-management') &&
-                    'bg-primary-dark dark:bg-meta-4'
+                    pathname.includes("schedule-management") &&
+                    "bg-primary-dark dark:bg-meta-4"
                   }`}
                 >
                   <img src={iconSchedule} alt="Schedule" />
                   Schedule
+                </NavLink>
+              </li>
+              {/* <!-- Menu Request Schedule --> */}
+
+              {/* <!-- Menu Request Schedule --> */}
+              <li>
+                <NavLink
+                  to="/admin/pasien-management"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
+                    pathname.includes("pasien-management") &&
+                    "bg-primary-dark dark:bg-meta-4"
+                  }`}
+                >
+                  <img src={iconSchedule} alt="Pasien" />
+                  Pasien
+                </NavLink>
+              </li>
+              {/* <!-- Menu Request Schedule --> */}
+
+              {/* <!-- Menu Request Schedule --> */}
+              <li>
+                <NavLink
+                  to="/admin/Petugas-management"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
+                    pathname.includes("petugas-management") &&
+                    "bg-primary-dark dark:bg-meta-4"
+                  }`}
+                >
+                  <img src={iconSchedule} alt="Petugas" />
+                  Petugas
+                </NavLink>
+              </li>
+              {/* <!-- Menu Request Schedule --> */}
+
+              {/* <!-- Menu Request Schedule --> */}
+              <li>
+                <NavLink
+                  to="/admin/Dokter-management"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
+                    pathname.includes("Dokter-management") &&
+                    "bg-primary-dark dark:bg-meta-4"
+                  }`}
+                >
+                  <img src={iconSchedule} alt="Dokter" />
+                  Dokter
+                </NavLink>
+              </li>
+              {/* <!-- Menu Request Schedule --> */}
+
+              {/* <!-- Menu Request Schedule --> */}
+              <li>
+                <NavLink
+                  to="/admin/Pemeriksaan-management"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
+                    pathname.includes("pemeriksaan-management") &&
+                    "bg-primary-dark dark:bg-meta-4"
+                  }`}
+                >
+                  <img src={iconSchedule} alt="Jadwal" />
+                  Pemeriksaan
+                </NavLink>
+              </li>
+              {/* <!-- Menu Request Schedule --> */}
+
+              {/* <!-- Menu Request Schedule --> */}
+              <li>
+                <NavLink
+                  to="/admin/Hasil-Pemeriksaan-Management"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
+                    pathname.includes("Hasil-Pemeriksaan-Management") &&
+                    "bg-primary-dark dark:bg-meta-4"
+                  }`}
+                >
+                  <img src={iconSchedule} alt="Hasil Pemeriksaan" />
+                  Hasil Pemeriksaan
+                </NavLink>
+              </li>
+              {/* <!-- Menu Request Schedule --> */}
+
+              {/* <!-- Menu Request Schedule --> */}
+              <li>
+                <NavLink
+                  to="/admin/Spesimen-management"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
+                    pathname.includes("Spesimen-management") &&
+                    "bg-primary-dark dark:bg-meta-4"
+                  }`}
+                >
+                  <img src={iconSchedule} alt="Spesimen" />
+                  Spesimen
+                </NavLink>
+              </li>
+              {/* <!-- Menu Request Schedule --> */}
+
+              {/* <!-- Menu Request Schedule --> */}
+              <li>
+                <NavLink
+                  to="/admin/Layanan-management"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
+                    pathname.includes("Layanan-management") &&
+                    "bg-primary-dark dark:bg-meta-4"
+                  }`}
+                >
+                  <img src={iconSchedule} alt="Layanan" />
+                  Layanan
+                </NavLink>
+              </li>
+              {/* <!-- Menu Request Schedule --> */}
+
+              {/* <!-- Menu Request Schedule --> */}
+              <li>
+                <NavLink
+                  to="/admin/Inventaris-management"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
+                    pathname.includes("Inventaris-management") &&
+                    "bg-primary-dark dark:bg-meta-4"
+                  }`}
+                >
+                  <img src={iconSchedule} alt="Inventaris" />
+                  Inventaris
                 </NavLink>
               </li>
               {/* <!-- Menu Request Schedule --> */}
