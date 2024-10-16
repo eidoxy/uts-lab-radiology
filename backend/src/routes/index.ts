@@ -14,6 +14,7 @@ import borrowingRoutes from './borrowing';
 import scheduleRoutes from './schedule';
 import dokterRoutes from './dokter';
 import pasienRoutes from './pasien';
+import petugasRoutes from './petugas';
 
 const router = Router();
 
@@ -31,6 +32,7 @@ router
   .use('/borrowing', borrowingRoutes)
   .use('/schedule', scheduleRoutes)
   .use('/dokter', dokterRoutes)
-  .use('/pasien', pasienRoutes);
+  .use('/pasien', pasienRoutes)
+  .use('/petugas', petugasRoutes);
 
 export default router;
