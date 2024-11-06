@@ -117,7 +117,7 @@ const FormCreateSchedule = () => {
 
       if (response.status === 201) {
         setError(null);
-        return navigate('/admin/schedule-pemeriksaan');
+        return navigate('/admin/schedule-management');
       } else {
         setError('An error occurred while creating the schedule.');
       }

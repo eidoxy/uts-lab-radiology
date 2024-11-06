@@ -7,14 +7,12 @@ import HomePage from './pages/HomePage';
 import Login from './pages/Authentication/Login';
 import Register from './pages/Authentication/Register';
 import Loader from './common/Loader';
-import { routes, publicRoutes } from './routes';
+import { routes } from './routes';
 
 const DefaultLayout = lazy(() => import('./layout/DefaultLayout'));
 const DefaultLayoutMember = lazy(
   () => import('./layout/DefaultLayoutMember')
 );
-const AllBooks = lazy(() => import('./pages/AllBooks'));
-const BooksDetail = lazy(() => import('./pages/BooksDetail'));
 
 // interface ProtectedRoutesProps {
 //   children?: ReactNode;
@@ -50,10 +48,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route index element={<HomePage />} />
-        <Route path="/all-books" element={<AllBooks />} />
-        <Route path="/books-detail/:id" element={<BooksDetail />} />
 
-        <Route element={<DefaultLayoutMember />}>
+        {/* <Route element={<DefaultLayoutMember />}>
           {publicRoutes.map((routes, index) => {
             const { path, component: Component } = routes;
             return (
@@ -68,7 +64,7 @@ function App() {
               />
             );
           })}
-        </Route>
+        </Route> */}
         {/* End Public Routes */}
 
         {/* Admin Routes */}

@@ -17,7 +17,7 @@ const protectedRoutes = Router();
 publicRoutes.post('/login', loginAdminController);
 
 protectedRoutes
-  .use(authenticateToken, authenticateUser)
+  // .use(authenticateToken, authenticateUser)
   .get('/', getAdminsController)
   .get('/:id', getAdminByIdController)
   .post('/create', createAdminController)
