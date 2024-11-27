@@ -1,7 +1,9 @@
 export interface Pasien {
-  id_pasien?: number;
+  id_pasien?: number & string;
+  id_eksternal?: string;
   nama_lengkap: string;
   nama_panggilan: string;
+  nama_ibu: string;
   tanggal_lahir: Date;
   tempat_lahir: string;
   jenis_kelamin?: string;
@@ -9,14 +11,20 @@ export interface Pasien {
   ras?: string;
   alamat: string;
   kode_negara: string;
-  telepon: string;
+  telepon?: string;
+  no_telp?: string;
   bahasa_utama: string;
   status_pernikahan?: string;
   no_rekening: string;
   no_sim: string;
   kelompok_etnis?: string;
-  email: string;
-  password: string;
-  ktp: string;
+  kelahiran_kembar?: string;
+  email?: string;
+  password?: string;
+  ktp?: string;
+  kewarganegaraan?: string;
   status_pasien?: string;
+  status_militer?: string;
+  indikator_meninggal?: string;
+  tanggal_meninggal?: Date;
 }

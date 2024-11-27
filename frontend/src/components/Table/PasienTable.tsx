@@ -6,6 +6,8 @@ import axios from 'axios';
 import Loader from '../../common/Loader';
 import { Pasien } from '../../models/pasien.model';
 
+import PocketBase from 'pocketbase';
+
 const PasienTable = () => {
   const [data, setData] = useState<Pasien[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -17,6 +19,8 @@ const PasienTable = () => {
   const pageCount = Math.ceil(data.length / itemsPerPage);
   let currentPage = itemOffset / itemsPerPage;
 
+  const pb = new PocketBase('https://rawat-jalan.pockethost.io');
+
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
@@ -24,13 +28,40 @@ const PasienTable = () => {
   useEffect(() => {
     const fetchPasien = async () => {
       try {
-        const response = await axios.get(
-          'http://localhost:3000/api/pasien'
-        );
+        // const response = await axios.get(
+        //   'https://rawat-jalan.pockethost.io/api/collections/pasien/records',
+        //   { withCredentials: true }
+        // );
+        const records = await pb.collection('pasien').getFullList({
+          sort: '-created',
+        });
 
-        if (response.status === 200) {
-          setData(response.data.payload);
-        }
+        const pasienData = records.map((record: any) => ({
+          id_pasien: record.id,
+          id_eksternal: record.id_eksternal,
+          nama_lengkap: record.nama_lengkap,
+          nama_panggilan: record.nama_panggilan,
+          nama_ibu: record.nama_ibu,
+          jenis_kelamin: record.jenis_kelamin,
+          tanggal_lahir: record.tanggal_lahir,
+          tempat_lahir: record.tempat_lahir,
+          agama: record.agama,
+          ras: record.ras,
+          alamat: record.alamat,
+          kode_negara: record.kode_negara,
+          no_telp: record.no_telp,
+          bahasa_utama: record.bahasa_utama,
+          status_pernikahan: record.status_pernikahan,
+          no_rekening: record.no_rekening,
+          no_sim: record.no_sim,
+          kelompok_etnis: record.kelompok_etnis,
+          kelahiran_kembar: record.kelahiran_kembar,
+          indikator_meninggal: record.indikator_meninggal,
+          kewarganegaraan: record.kewarganegaraan,
+          status_militer: record.status_militer,
+          tanggal_meninggal: record.tanggal_meninggal,
+        }));
+        setData(pasienData);
       } catch (error) {
         console.error('Error fetching pasien:', error);
       }
@@ -99,7 +130,7 @@ const PasienTable = () => {
                   </th>
                   <th className="min-w-[220px] py-4 px-4 xl:px-8 xl:py-6">
                     <h5 className="text-sm font-medium uppercase xsm:text-base">
-                      Email
+                      Kewarganegaraan
                     </h5>
                   </th>
                   <th className="min-w-[150px] py-4 px-4 xl:px-8 xl:py-6">
@@ -129,12 +160,12 @@ const PasienTable = () => {
                     </td>
                     <td className="max-w-[200px]  border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
                       <p className="overflow-ellipsis overflow-hidden text-black dark:text-white">
-                        {items.email}
+                        {items.kewarganegaraan}
                       </p>
                     </td>
                     <td className="max-w-[200px]  border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
                       <p className="overflow-ellipsis overflow-hidden text-black dark:text-white">
-                        {items.telepon}
+                        {items.no_telp}
                       </p>
                     </td>
                     <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
