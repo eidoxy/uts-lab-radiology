@@ -138,6 +138,16 @@ const PasienTable = () => {
                       Phone
                     </h5>
                   </th>
+                  <th className="min-w-[150px] py-4 px-4 xl:px-8 xl:py-6">
+                    <h5 className="text-sm font-medium uppercase xsm:text-base">
+                      NIK
+                    </h5>
+                  </th>
+                  <th className="min-w-[150px] py-4 px-4 xl:px-8 xl:py-6">
+                    <h5 className="text-sm font-medium uppercase xsm:text-base">
+                      Jenis Kelamin
+                    </h5>
+                  </th>
                   <th className="py-4 px-4 xl:px-8 xl:py-6">
                     <h5 className="text-sm font-medium uppercase xsm:text-base">
                       Action
@@ -166,6 +176,16 @@ const PasienTable = () => {
                     <td className="max-w-[200px]  border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
                       <p className="overflow-ellipsis overflow-hidden text-black dark:text-white">
                         {items.no_telp}
+                      </p>
+                    </td>
+                    <td className="max-w-[200px]  border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
+                      <p className="overflow-ellipsis overflow-hidden text-black dark:text-white">
+                        {items.ktp}
+                      </p>
+                    </td>
+                    <td className="max-w-[200px]  border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
+                      <p className="overflow-ellipsis overflow-hidden text-black dark:text-white">
+                        {items.jenis_kelamin}
                       </p>
                     </td>
                     <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
