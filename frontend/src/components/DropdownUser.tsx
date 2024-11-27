@@ -12,7 +12,7 @@ const DropdownUser = () => {
   const trigger = useRef<HTMLAnchorElement>(null);
   const dropdown = useRef<HTMLDivElement>(null);
 
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('user') || 'null');
   const userId: number = user ? user.id_admin : 0;
 
   useEffect(() => {

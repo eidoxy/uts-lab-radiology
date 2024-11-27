@@ -7,6 +7,7 @@ export default async function getConnection() {
   try {
     const connection = await mysql.createConnection({
       host: process.env.DB_HOST,
+      // port: process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : undefined,
       user: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
@@ -14,5 +15,6 @@ export default async function getConnection() {
     return connection;
   } catch (error) {
     console.error('Error connecting to MySQL:', error);
+    throw error;
   }
 }

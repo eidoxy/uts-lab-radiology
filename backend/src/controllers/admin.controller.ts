@@ -31,6 +31,7 @@ export async function loginAdminController(req: Request, res: Response) {
         expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
         httpOnly: false,
         secure: process.env.NODE_ENV === 'production',
+        domain: process.env.NODE_ENV === 'production' ? '192.168.1.7' : undefined,
         // sameSite: 'none',
       });
     }
