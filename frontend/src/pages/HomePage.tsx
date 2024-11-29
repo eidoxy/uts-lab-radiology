@@ -1,9 +1,9 @@
 import cover from '../images/cover-bg.jpg';
 
-import imgCard1 from '../images/card/img-1.jpg';
-import imgCard2 from '../images/card/img-2.jpg';
-import imgCard3 from '../images/card/img-3.jpg';
-import imgCard4 from '../images/card/img-4.jpg';
+import imgCard1 from '../images/card/img-1.webp';
+import imgCard2 from '../images/card/img-2.webp';
+import imgCard3 from '../images/card/img-3.webp';
+import imgCard4 from '../images/card/img-4.webp';
 
 import './home.css';
 
@@ -49,7 +49,7 @@ const HomePage = () => {
                       About Us
                     </a>
                   </li>
-                  <li className="md:ml-4">
+                  {/* <li className="md:ml-4">
                     <a
                       className="py-2 inline-block md:text-white md:px-2 font-semibold"
                       href="#"
@@ -72,7 +72,7 @@ const HomePage = () => {
                     >
                       Blog
                     </a>
-                  </li>
+                  </li> */}
                   <li className="md:ml-4">
                     <a
                       className="py-2 inline-block md:text-white md:px-2 font-semibold"
@@ -83,10 +83,10 @@ const HomePage = () => {
                   </li>
                   <li className="md:ml-6 mt-3 md:mt-0">
                     <a
-                      className="inline-block font-semibold px-4 py-2 text-white bg-blue-600 md:bg-transparent md:text-white border border-white rounded"
-                      href="book-appointment.html"
+                      className="inline-block font-semibold px-4 py-2 text-white bg-blue-600 md:bg-transparent md:text-white border border-white rounded hover:bg-white hover:text-blue-600 transition"
+                      href="/admin/login"
                     >
-                      Book Appointment
+                      Admin Login
                     </a>
                   </li>
                 </ul>
@@ -108,21 +108,21 @@ const HomePage = () => {
                 loading="lazy"
               />
             </div>
-            <div className="lg:w-3/4 xl:w-2/4 relative z-10 h-100 lg:mt-16">
+            <div className="flex lg:w-3/4 xl:w-2/4 relative z-10 h-100 lg:mt-16 justify-center items-center">
               <div>
                 <h1 className="text-white text-4xl md:text-5xl xl:text-6xl font-bold leading-tight">
                   A better life starts with a beautiful smile.
                 </h1>
                 <p className="text-blue-100 text-xl md:text-2xl leading-snug mt-4">
-                  Welcome to the Lab and Radiology, where trust and comfort
+                  Welcome to the Radiolabs, where trust and comfort
                   are priorities.
                 </p>
-                <a
-                  href="#"
+                {/* <a
+                  href="/admin/login"
                   className="px-8 py-4 bg-teal-500 text-white rounded inline-block mt-8 font-semibold"
                 >
                   Book Appointment
-                </a>
+                </a> */}
               </div>
             </div>
           </section>
@@ -133,7 +133,7 @@ const HomePage = () => {
           <div className="flex flex-col lg:flex-row lg:-mx-8">
             <div className="w-full lg:w-1/2 lg:px-8">
               <h2 className="text-3xl leading-tight font-bold mt-4">
-                Welcome to the Lab and Radiology Service
+                Welcome to the Radiolabs Service
               </h2>
               <p className="text-lg mt-4 font-semibold">
                 Your Partner in Accurate Diagnostics and Medical Imaging
@@ -270,9 +270,9 @@ const HomePage = () => {
             </div>
             <div className="w-full md:max-w-md md:mx-auto lg:w-1/2 lg:px-8 mt-12 mt:md-0">
               <div className="bg-gray-400 w-full h-72 rounded-lg" />
-              <p className="italic text-sm mt-2 text-center">
+              {/* <p className="italic text-sm mt-2 text-center">
                 Aenean ante nisi, gravida non mattis semper.
-              </p>
+              </p> */}
             </div>
           </div>
         </section>
@@ -372,12 +372,6 @@ const HomePage = () => {
               <br className="block md:hidden" />
               Call us on: +62 0895 3503 53300
             </h2>
-            <a
-              href="#"
-              className="px-8 py-4 bg-white text-blue-600 rounded inline-block font-semibold md:ml-8 mt-4 md:mt-0"
-            >
-              Book Appointment
-            </a>
           </div>
         </section>
         {/* end cta */}
@@ -385,7 +379,7 @@ const HomePage = () => {
         <footer className="relative bg-slate-900 text-white px-4 sm:px-8 lg:px-16 xl:px-40 2xl:px-64 py-12 lg:py-24">
           <div className="flex flex-col md:flex-row">
             <div className="w-full lg:w-2/6 lg:mx-4 lg:pr-8">
-              <h3 className="font-bold text-2xl">Lab and Radiology</h3>
+              <h3 className="font-bold text-2xl">Radiolabs</h3>
               {/* <p className="text-gray-400">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                 sed diam nonumy.
@@ -503,7 +497,7 @@ const HomePage = () => {
                     <span className="ml-3">+62 0895 3503 53300</span>
                   </a>
                 </li>
-                <li className="mt-4">
+                {/* <li className="mt-4">
                   <a
                     href="#"
                     className="flex items-center opacity-75 hover:opacity-100"
@@ -523,7 +517,7 @@ const HomePage = () => {
                       labandradiology@example.com
                     </span>
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="w-full lg:w-1/6 mt-8 lg:mt-0 lg:mx-4">
@@ -586,7 +580,7 @@ const HomePage = () => {
                 </li>
               </ul>
               <p className="text-sm text-gray-400 mt-12">
-                © 2024 LabAndRadiology. <br className="hidden lg:block" />
+                © 2024 Radiolabs. <br className="hidden lg:block" />
                 All Rights Reserved.
               </p>
             </div>

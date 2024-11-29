@@ -5,14 +5,20 @@ import axios from 'axios';
 
 const DropdownUserMember = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [userData, setUserData] = useState<any>([]);
+  interface UserData {
+    id: number;
+    name: string;
+    // Add other fields as necessary
+  }
+
+  const [userData, setUserData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
-  const trigger = useRef<unknown>(null);
-  const dropdown = useRef<unknown>(null);
+  const trigger = useRef<HTMLAnchorElement>(null);
+  const dropdown = useRef<HTMLDivElement>(null);
 
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = JSON.parse(localStorage.getItem('user') || 'null');
   const userId: number = user ? user.id : 0;
 
   useEffect(() => {
@@ -59,7 +65,7 @@ const DropdownUserMember = () => {
           <>
             <span className="hidden text-right lg:block">
               <span className="block text-sm font-medium text-black dark:text-white">
-                {userData.name}
+                {userData?.name}
               </span>
             </span>
 
