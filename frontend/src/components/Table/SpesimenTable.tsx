@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import Loader from '../../common/Loader';
 import { Spesimen } from '../../models/spesimen.model';
+import formatDate from '../../utils/format';
 
 const SpesimenTable = () => {
   const [data, setData] = useState<Spesimen[]>([]);
@@ -40,7 +41,7 @@ const SpesimenTable = () => {
   }, []);
 
   // Invoke when user click to request another page.
-  const handlePageClick = (event: any) => {
+  const handlePageClick = (event: { selected: number }) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
     setItemOffset(newOffset);
     currentPage = event.selected;
@@ -96,6 +97,11 @@ const SpesimenTable = () => {
                   </th>
                   <th className="min-w-[220px] py-4 px-4 xl:px-8 xl:py-6">
                     <h5 className="text-sm font-medium uppercase xsm:text-base">
+                      Pemeriksaan
+                    </h5>
+                  </th>
+                  <th className="min-w-[220px] py-4 px-4 xl:px-8 xl:py-6">
+                    <h5 className="text-sm font-medium uppercase xsm:text-base">
                       Jenis
                     </h5>
                   </th>
@@ -127,6 +133,11 @@ const SpesimenTable = () => {
                     <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
                       <p className="text-black dark:text-white">
                         {currentPage * itemsPerPage + id + 1}
+                      </p>
+                    </td>
+                    <td className="max-w-[80px] border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
+                      <p className="text-black dark:text-white">
+                        {items.nama_lengkap} ~ {items.nama_dokter} ~ {formatDate(items.tanggal_permintaan)}
                       </p>
                     </td>
                     <td className="max-w-[80px] border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">

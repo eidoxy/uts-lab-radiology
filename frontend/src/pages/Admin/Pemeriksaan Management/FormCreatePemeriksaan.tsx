@@ -6,7 +6,6 @@ import Breadcrumb from '../../../components/Breadcrumb';
 import { Pemeriksaan } from '../../../models/pemeriksaan.model';
 import { Pasien } from '../../../models/pasien.model';
 import { Dokter } from '../../../models/dokter.model';
-import { Spesimen } from '../../../models/spesimen.model';
 import { Layanan } from '../../../models/layanan.model';
 import formatDate from '../../../utils/format';
 
@@ -28,7 +27,6 @@ const FormCreatePemeriksaan = () => {
   const [selectedPasien, setSelectedPasien] = useState('');
   const [selectedDokter, setSelectedDokter] = useState('');
   const [selectedLayanan, setSelectedLayanan] = useState('');
-  const [selectedSpesimen, setSelectedSpesimen] = useState('');
   const [selectedJenisPemeriksaan, setSelectedJenisPemeriksaan] = useState('');
   const [selectedPrioritas, setSelectedPrioritas] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('');
@@ -77,10 +75,6 @@ const FormCreatePemeriksaan = () => {
     setSelectedLayanan(e.target.value);
   }
 
-  const handleSpesimenSelect = (e: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedSpesimen(e.target.value);
-  }
-
   const handleJenisPemeriksaanSelect = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelectedJenisPemeriksaan(e.target.value);
   }
@@ -112,7 +106,6 @@ const FormCreatePemeriksaan = () => {
       id_pasien: selectedPasien,
       id_dokter: selectedDokter,
       id_layanan: selectedLayanan,
-      id_spesimen: selectedSpesimen,
       jenis_pemeriksaan: selectedJenisPemeriksaan,
       prioritas: selectedPrioritas,
       status_permintaan: selectedStatus,
@@ -206,36 +199,6 @@ const FormCreatePemeriksaan = () => {
                           value={dokter.id_dokter}
                         >
                           {dokter.nama_dokter}
-                        </option>
-                      ))}
-                    </select>
-                    {error && <p className="text-danger">{error}</p>}
-                  </div>
-                </div>
-
-                <div className="mb-5">
-                  <div className="w-full">
-                    <label
-                      className="mb-2.5 block text-black dark:text-white"
-                      htmlFor="name"
-                    >
-                      Jenis Spesimen
-                    </label>
-                    <select
-                      id="spesimen"
-                      name="spesimen"
-                      value={selectedSpesimen}
-                      onChange={handleSpesimenSelect}
-                      className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                      required
-                    >
-                      <option value="">Select Spesimen</option>
-                      {pemeriksaan.spesimen.map((spesimen: Spesimen) => (
-                        <option
-                          key={spesimen.id_spesimen}
-                          value={spesimen.id_spesimen}
-                        >
-                          {spesimen.jenis_spesimen}
                         </option>
                       ))}
                     </select>
