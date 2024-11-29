@@ -18,6 +18,7 @@ enum StatusSpesimen {
 
 export interface Spesimen {
   id_spesimen: number;
+  id_pemeriksaan?: number;
   jenis_spesimen: JenisSpesimen;
   tanggal_pengambilan: Date;
   lokasi_pengambilan: string;

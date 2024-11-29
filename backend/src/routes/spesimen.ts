@@ -6,6 +6,7 @@ import {
   getSpesimenController,
   getSpesimenByIdController,
   createSpesimenController,
+  deleteSpesimenController,
 } from '../controllers/spesimen.controller';
 
 const publicRoutes = Router();
@@ -17,7 +18,8 @@ publicRoutes
 
 protectedRoutes
   .use(authenticateToken, authenticateUser)
-  .post('/create', createSpesimenController);
+  .post('/create', createSpesimenController)
+  .delete('/delete/:id', deleteSpesimenController);
 
 const spesimenRoutes = Router();
 spesimenRoutes.use(publicRoutes);
