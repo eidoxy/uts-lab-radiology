@@ -4,7 +4,9 @@ import { authenticateUser } from '../middleware/authenticateUser';
 
 import {
   getScheduleController,
+  getScheduleByIdController,
   createScheduleController,
+  deleteScheduleController,
 } from '../controllers/schedule.controller';
 
 const publicRoutes = Router();
@@ -12,16 +14,15 @@ const protectedRoutes = Router();
 
 publicRoutes
   .get('/', getScheduleController)
-  .post('/create', createScheduleController);
-
-// protectedRoutes
-//   .use(authenticateToken, authenticateUser)
-//   .post('/create', createCategoryController)
-//   .put('/update/:id', updateCategoryController)
-//   .delete('/delete/:id', deleteCategoryController);
+  .get('/:id', getScheduleByIdController);
+  
+protectedRoutes
+  .use(authenticateToken, authenticateUser)
+  .post('/create', createScheduleController)
+  .delete('/delete/:id', deleteScheduleController);
 
 const scheduleRoutes = Router();
 scheduleRoutes.use(publicRoutes);
-// scheduleRoutes.use(protectedRoutes);
+scheduleRoutes.use(protectedRoutes);
 
 export default scheduleRoutes;
