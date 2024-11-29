@@ -6,6 +6,7 @@ import {
   getLayananController,
   getLayananByIdController,
   createLayananController,
+  deleteLayananController,
 } from '../controllers/layanan.controller';
 
 const publicRoutes = Router();
@@ -17,7 +18,8 @@ publicRoutes
 
 protectedRoutes
   .use(authenticateToken, authenticateUser)
-  .post('/create', createLayananController);
+  .post('/create', createLayananController)
+  .delete('/delete/:id', deleteLayananController);
 
 const layananRoutes = Router();
 layananRoutes.use(publicRoutes);

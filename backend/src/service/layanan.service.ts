@@ -110,3 +110,44 @@ export async function createLayanan(bodyRequest: Layanan) {
     await db.end();
   }
 }
+
+export async function deleteLayanan(id: number) {
+  const db = await getConnection();
+
+  // ? : check if the database connection is successful
+  if (!db) throw new Error("Cannot connect to database");
+
+  try {
+    const [rows] = await db.query<LayananQueryResult[]>(
+      "SELECT * FROM layanan WHERE id_layanan = ?",
+      [id]
+    );
+
+    // ? : check if the layanan is found
+    if (rows.length === 0) {
+      return {
+        status: 404,
+        message: `Layanan with id ${id} not found`,
+      };
+    }
+
+    const [result] = await db.query<ResultSetHeader>(
+      "DELETE FROM layanan WHERE id_layanan = ?",
+      [id]
+    );
+
+    // ! : return the deleted layanan
+    return {
+      status: 200,
+      message: `Layanan with id ${id} deleted successfully!`,
+    };
+  } catch (error) {
+    console.error("Database query error:", error);
+    return {
+      status: 500,
+      message: "Internal server error",
+    };
+  } finally {
+    await db.end();
+  }
+}
