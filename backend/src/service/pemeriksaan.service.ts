@@ -11,11 +11,12 @@ export async function getPemeriksaan() {
 
   try {
     const [rows] = await db.query<PemeriksaanQueryResult[]>(
-      `SELECT
+      `
+        SELECT
         pemeriksaan.id_pemeriksaan,
         pasien.nama_lengkap,
         dokter.nama_dokter,
-        spesimen.jenis_spesimen,
+        COALESCE(spesimen.jenis_spesimen, '-') AS jenis_spesimen,
         layanan.nama_layanan,
         pemeriksaan.jenis_pemeriksaan,
         pemeriksaan.tanggal_permintaan,
@@ -25,9 +26,9 @@ export async function getPemeriksaan() {
         FROM pemeriksaan
         JOIN pasien ON pemeriksaan.id_pasien = pasien.id_pasien
         JOIN dokter ON pemeriksaan.id_dokter = dokter.id_dokter
-        JOIN spesimen ON pemeriksaan.id_spesimen = spesimen.id_spesimen
-        JOIN layanan ON pemeriksaan.id_layanan = layanan.id_layanan`
-
+        LEFT JOIN spesimen ON pemeriksaan.id_spesimen = spesimen.id_spesimen
+        JOIN layanan ON pemeriksaan.id_layanan = layanan.id_layanan
+      `
     );
 
     // ? : check if there are no pemeriksaan
@@ -63,11 +64,12 @@ export async function getPemeriksaanById(id: number) {
 
   try {
     const [rows] = await db.query<PemeriksaanQueryResult[]>(
-      `SELECT
+      `
+        SELECT
         pemeriksaan.id_pemeriksaan,
         pasien.nama_lengkap,
         dokter.nama_dokter,
-        spesimen.jenis_spesimen,
+        COALESCE(spesimen.jenis_spesimen, '-') AS jenis_spesimen,
         layanan.nama_layanan,
         pemeriksaan.jenis_pemeriksaan,
         pemeriksaan.tanggal_permintaan,
@@ -77,7 +79,7 @@ export async function getPemeriksaanById(id: number) {
         FROM pemeriksaan
         JOIN pasien ON pemeriksaan.id_pasien = pasien.id_pasien
         JOIN dokter ON pemeriksaan.id_dokter = dokter.id_dokter
-        JOIN spesimen ON pemeriksaan.id_spesimen = spesimen.id_spesimen
+        LEFT JOIN spesimen ON pemeriksaan.id_spesimen = spesimen.id_spesimen
         JOIN layanan ON pemeriksaan.id_layanan = layanan.id_layanan
         WHERE pemeriksaan.id_pemeriksaan = ?`,
       [id]
@@ -114,16 +116,12 @@ export async function createPemeriksaan(bodyRequest: Pemeriksaan) {
   // ? : check if the database connection is successful
   if (!db) throw new Error('Cannot connect to database');
 
-  const idSpesimen =
-    bodyRequest.id_spesimen !== null ? bodyRequest.id_spesimen : null;
-
   try {
     const [result] = await db.query<ResultSetHeader>(
-      'INSERT INTO pemeriksaan (id_pasien, id_dokter, id_spesimen, id_layanan, jenis_pemeriksaan, tanggal_permintaan, prioritas, status_permintaan, catatan_dokter) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      'INSERT INTO pemeriksaan (id_pasien, id_dokter, id_layanan, jenis_pemeriksaan, tanggal_permintaan, prioritas, status_permintaan, catatan_dokter) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
       [
         bodyRequest.id_pasien,
         bodyRequest.id_dokter,
-        idSpesimen,
         bodyRequest.id_layanan,
         bodyRequest.jenis_pemeriksaan,
         bodyRequest.tanggal_permintaan,
@@ -140,6 +138,42 @@ export async function createPemeriksaan(bodyRequest: Pemeriksaan) {
       payload: {
         ...bodyRequest,
       },
+    };
+  } catch (error) {
+    console.error('Database query error:', error);
+    return {
+      status: 500,
+      message: 'Internal server error',
+    };
+  } finally {
+    await db.end();
+  }
+}
+
+export async function deletePemeriksaan(id: number) {
+  const db = await getConnection();
+
+  // ? : check if the database connection is successful
+  if (!db) throw new Error('Cannot connect to database');
+
+  try {
+    const [result] = await db.query<ResultSetHeader>(
+      'DELETE FROM pemeriksaan WHERE id_pemeriksaan = ?',
+      [id]
+    );
+
+    // ? : check if the pemeriksaan is not found
+    if (result.affectedRows === 0) {
+      return {
+        status: 404,
+        message: `Pemeriksaan with id ${id} not found`,
+      };
+    }
+
+    // ! : return the deleted pemeriksaan
+    return {
+      status: 200,
+      message: `Pemeriksaan with id ${id} deleted successfully!`,
     };
   } catch (error) {
     console.error('Database query error:', error);

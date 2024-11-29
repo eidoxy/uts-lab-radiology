@@ -6,6 +6,7 @@ import {
   getPemeriksaanController,
   getPemeriksaanByIdController,
   createPemeriksaanController,
+  deletePemeriksaanController,
 } from '../controllers/pemeriksaan.controller';
 
 const publicRoutes = Router();
@@ -17,7 +18,8 @@ publicRoutes
 
 protectedRoutes
   .use(authenticateToken, authenticateUser)
-  .post('/create', createPemeriksaanController);
+  .post('/create', createPemeriksaanController)
+  .delete('/delete/:id', deletePemeriksaanController);
 
 const pemeriksaanRoutes = Router();
 pemeriksaanRoutes.use(publicRoutes);
