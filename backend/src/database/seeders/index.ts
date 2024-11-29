@@ -1,5 +1,4 @@
 import seedAdmins from './admin';
-import seedLibraryProfile from './libraryProfile';
 
 import getConnection from '..';
 
@@ -9,7 +8,6 @@ const seedDatabase = async () => {
 
     if (connection) {
       await seedAdmins();
-      await seedLibraryProfile();
 
       connection.end();
     }
