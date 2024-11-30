@@ -6,8 +6,6 @@ import {
   loginPetugas,
   getPetugas,
   getPetugasById,
-  // updatePetugas,
-  // deletePetugas,
 } from '../service/petugas.service';
 import { serverError } from '../utils/response';
 

@@ -8,12 +8,19 @@ import router from './routes';
 const app = express();
 
 const allowedOrigins = [
+  'http://localhost:4173',
   'http://localhost:8080',
   'http://localhost:8081',
   'http://localhost:8082',
   'http://localhost:8083',
   'http://localhost:8084',
-  'http://192.168.1.7:8083',
+  'http://103.101.225.18:8080',
+  'http://103.101.225.18:8081',
+  'http://103.101.225.18:8082',
+  'http://103.101.225.18:8083',
+  'http://103.101.225.18:8084',
+  'http://103.101.225.18:3000',
+  'https://wabw.chasterise.fun',
 ];
 
 const corsOptions = {

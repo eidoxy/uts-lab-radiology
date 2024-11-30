@@ -3,6 +3,6 @@ import app from './main';
 
 require('dotenv').config();
 
-app.listen(process.env.APP_PORT, () => {
+app.listen(Number(process.env.APP_PORT), '0.0.0.0', () => {
   console.log(`Server started at http://localhost:${process.env.APP_PORT}`);
 });
