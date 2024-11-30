@@ -6,9 +6,6 @@ const PemeriksaanManagement = lazy(
 const FormCreatePemeriksaan = lazy(
   () => import("../pages/Admin/Pemeriksaan Management/FormCreatePemeriksaan")
 );
-const FormEditPemeriksaan = lazy(
-  () => import("../pages/Admin/Pemeriksaan Management/FormEditPemeriksaan")
-);
 
 const coreRoutes = [
   {
@@ -20,11 +17,6 @@ const coreRoutes = [
     path: "/admin/pemeriksaan-management/create",
     title: "Create Pemeriksaan",
     component: FormCreatePemeriksaan,
-  },
-  {
-    path: "/admin/pemeriksaan-management/edit/:id",
-    title: "Edit Pemeriksaan",
-    component: FormEditPemeriksaan,
   },
 ];
 

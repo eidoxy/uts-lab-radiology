@@ -40,7 +40,7 @@ const DokterTable = () => {
   }, []);
 
   // Invoke when user click to request another page.
-  const handlePageClick = (event: any) => {
+  const handlePageClick = (event: { selected: number }) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
     setItemOffset(newOffset);
     currentPage = event.selected;

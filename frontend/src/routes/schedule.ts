@@ -6,9 +6,6 @@ const ScheduleManagement = lazy(
 const FormCreateSchedule = lazy(
   () => import('../pages/Admin/Schedule Management/FormCreateSchedule')
 );
-const FormEditSchedule = lazy(
-  () => import('../pages/Admin/Schedule Management/FormEditSchedule')
-);
 
 const coreRoutes = [
   {
@@ -20,11 +17,6 @@ const coreRoutes = [
     path: '/admin/schedule-management/create',
     title: 'Create Schedule',
     component: FormCreateSchedule,
-  },
-  {
-    path: '/admin/schedule-management/edit/:id',
-    title: 'Edit Schedule',
-    component: FormEditSchedule,
   },
 ];
 

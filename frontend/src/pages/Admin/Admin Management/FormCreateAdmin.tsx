@@ -9,10 +9,10 @@ const FormCreateAdmin = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState<Admin>({
-    name: '',
+    nama_admin: '',
     email: '',
     password: '',
-    phone: '',
+    telepon: '',
   });
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -26,13 +26,13 @@ const FormCreateAdmin = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (inputValue.name === '') {
+    if (inputValue.nama_admin === '') {
       return setError('Name is required.');
     } else if (inputValue.email === '') {
       return setError('Email is required.');
     } else if (inputValue.password === '') {
       return setError('Password is required.');
-    } else if (inputValue.phone === '') {
+    } else if (inputValue.telepon === '') {
       return setError('Phone is required.');
     }
 
@@ -44,12 +44,6 @@ const FormCreateAdmin = () => {
 
       if (response.status === 201) {
         setError(null);
-        setInputValue({
-          name: '',
-          email: '',
-          password: '',
-          phone: '',
-        });
         return navigate('/admin/admin-management');
       } else {
         setError('An error occurred while creating the admin.');
@@ -87,9 +81,9 @@ const FormCreateAdmin = () => {
                     </label>
                     <input
                       type="text"
-                      id="name"
-                      name="name"
-                      value={inputValue.name}
+                      id="nama_admin"
+                      name="nama_admin"
+                      value={inputValue.nama_admin}
                       onChange={handleInput}
                       placeholder="Name"
                       className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
@@ -153,9 +147,9 @@ const FormCreateAdmin = () => {
                     </label>
                     <input
                       type="text"
-                      id="phone"
-                      name="phone"
-                      value={inputValue.phone}
+                      id="telepon"
+                      name="telepon"
+                      value={inputValue.telepon}
                       onChange={handleInput}
                       placeholder="Phone Number"
                       className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"

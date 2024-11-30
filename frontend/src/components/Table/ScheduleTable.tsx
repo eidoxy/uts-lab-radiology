@@ -4,6 +4,7 @@ import ReactPaginate from 'react-paginate';
 import axios from 'axios';
 
 import Loader from '../../common/Loader';
+import formatDate from '../../utils/format';
 import { Schedule } from '../../models/schedule.model';
 
 const ScheduleTable = () => {
@@ -16,15 +17,6 @@ const ScheduleTable = () => {
   const currentItems = data.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(data.length / itemsPerPage);
   let currentPage = itemOffset / itemsPerPage;
-
-  const formatDate = (date: string) => {
-    const newDate = new Date(date);
-    return newDate.toLocaleDateString('en-GB', {
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric',
-    });
-  };
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
@@ -51,7 +43,7 @@ const ScheduleTable = () => {
   }, []);
 
   // Invoke when user click to request another page.
-  const handlePageClick = (event: any) => {
+  const handlePageClick = (event: { selected: number }) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
     setItemOffset(newOffset);
     currentPage = event.selected;
@@ -67,7 +59,7 @@ const ScheduleTable = () => {
 
       if (response.status === 200) {
         const updatedData = data.filter(
-          (item: Category) => item.id !== id
+          (item: Schedule) => item.id !== id
         );
         setData(updatedData);
       }

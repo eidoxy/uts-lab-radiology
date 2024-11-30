@@ -6,9 +6,6 @@ const PetugasManagement = lazy(
 const FormCreatePetugas = lazy(
   () => import("../pages/Admin/Petugas Management/FormCreatePetugas")
 );
-const FormEditPetugas = lazy(
-  () => import("../pages/Admin/Petugas Management/FormEditPetugas")
-);
 
 const coreRoutes = [
   {
@@ -20,11 +17,6 @@ const coreRoutes = [
     path: "/admin/petugas-management/create",
     title: "Create Petugas",
     component: FormCreatePetugas,
-  },
-  {
-    path: "/admin/petugas-management/edit/:id",
-    title: "Edit Petugas",
-    component: FormEditPetugas,
   },
 ];
 

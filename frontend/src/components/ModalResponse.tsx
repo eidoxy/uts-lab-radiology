@@ -1,4 +1,4 @@
-const Modal = ({open, onClose}) => {
+const Modal = () => {
     return(
         <div className={"${open ? 'visible bg-black' : 'invisible}"}>
             <h1>Hello World</h1>

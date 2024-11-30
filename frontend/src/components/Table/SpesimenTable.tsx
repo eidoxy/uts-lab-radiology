@@ -137,7 +137,7 @@ const SpesimenTable = () => {
                     </td>
                     <td className="max-w-[80px] border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
                       <p className="text-black dark:text-white">
-                        {items.nama_lengkap} ~ {items.nama_dokter} ~ {formatDate(items.tanggal_permintaan)}
+                        {items.nama_lengkap} ~ {items.nama_dokter} ~ {items.tanggal_permintaan ? formatDate(items.tanggal_permintaan) : 'N/A'}
                       </p>
                     </td>
                     <td className="max-w-[80px] border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">

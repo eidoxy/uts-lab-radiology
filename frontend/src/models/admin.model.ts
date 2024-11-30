@@ -1,7 +1,8 @@
 export interface Admin {
+  id?: number;
   id_admin?: number;
-  name: string;
+  nama_admin: string;
   email: string;
   password?: string;
-  phone: string;
+  telepon: string;
 }

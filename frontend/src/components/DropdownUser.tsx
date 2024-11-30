@@ -2,10 +2,11 @@ import { useRef, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import { Admin } from '../models/admin.model';
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [userData, setUserData] = useState<any>([]);
+  const [userData, setUserData] = useState<Admin>();
   const [loading, setLoading] = useState<boolean>(true);
   const navigate = useNavigate();
 
@@ -59,7 +60,7 @@ const DropdownUser = () => {
           <>
             <span className="hidden text-right lg:block">
               <span className="block text-sm font-medium text-black dark:text-white">
-                {userData.nama_admin}
+                {userData?.nama_admin}
               </span>
             </span>
 
@@ -108,7 +109,7 @@ const DropdownUser = () => {
         <ul className="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark">
           <li>
             <Link
-              to="/settings"
+              to="/admin/settings"
               className="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
             >
               <svg

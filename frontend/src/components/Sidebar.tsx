@@ -23,6 +23,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const sidebar = useRef<HTMLElement>(null);
 
   const storedSidebarExpanded = localStorage.getItem("sidebar-expanded");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [sidebarExpanded, setSidebarExpanded] = useState(
     storedSidebarExpanded === null
       ? false
@@ -110,10 +111,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         <nav className="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
           {/* <!-- Menu Group --> */}
           <div>
-            <h3 className="mb-4 ml-4 text-sm font-semibold text-white">
+            <h3 className="mb-2 ml-4 text-sm font-semibold text-white">
               MENU
             </h3>
-            <hr className="my-6 border-gray dark:border-meta-4" />
+            <hr className="mb-4 border-gray dark:border-meta-4" />
             <ul className="mb-6 flex flex-col gap-1.5">
               {/* <!-- Menu Item Dashboard --> */}
               <li>
@@ -144,51 +145,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 </NavLink>
               </li>
               {/* <!-- Menu Request Schedule --> */}
-
-              {/* <!-- Menu Pasien --> */}
-              <li>
-                <NavLink
-                  to="/admin/pasien-management"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes("pasien-management") &&
-                    "bg-primary-dark dark:bg-meta-4"
-                  }`}
-                >
-                  <img src={iconPasien} alt="Pasien" />
-                  Pasien
-                </NavLink>
-              </li>
-              {/* <!-- Menu Pasien --> */}
-
-              {/* <!-- Menu Petugas --> */}
-              <li>
-                <NavLink
-                  to="/admin/petugas-management"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes("petugas-management") &&
-                    "bg-primary-dark dark:bg-meta-4"
-                  }`}
-                >
-                  <img src={iconPetugas} alt="Petugas" />
-                  Petugas
-                </NavLink>
-              </li>
-              {/* <!-- Menu Petugas --> */}
-
-              {/* <!-- Menu Dokter --> */}
-              <li>
-                <NavLink
-                  to="/admin/dokter-management"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
-                    pathname.includes("dokter-management") &&
-                    "bg-primary-dark dark:bg-meta-4"
-                  }`}
-                >
-                  <img src={iconDokter} alt="Dokter" />
-                  Dokter
-                </NavLink>
-              </li>
-              {/* <!-- Menu Dokter --> */}
 
               {/* <!-- Menu Pemeriksaan --> */}
               <li>
@@ -264,6 +220,75 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 </NavLink>
               </li> */}
               {/* <!-- Menu Request Schedule --> */}
+            </ul>
+          </div>
+          {/* <!-- Menu Pengguna Group --> */}
+          <div>
+            <h3 className="mb-2 mt-12 ml-4 text-sm font-semibold text-white">
+              PENGGUNA
+            </h3>
+            <hr className="mb-4 border-gray dark:border-meta-4" />
+            <ul className="mb-6 flex flex-col gap-1.5">
+
+              {/* <!-- Menu Admin --> */}
+              <li>
+                <NavLink
+                  to="/admin/admin-management"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
+                    pathname.includes("admin-management") &&
+                    "bg-primary-dark dark:bg-meta-4"
+                  }`}
+                >
+                  <img src={iconPetugas} alt="Admin" />
+                  Admin
+                </NavLink>
+              </li>
+              {/* <!-- Menu Admin --> */}
+
+              {/* <!-- Menu Pasien --> */}
+              <li>
+                <NavLink
+                  to="/admin/pasien-management"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
+                    pathname.includes("pasien-management") &&
+                    "bg-primary-dark dark:bg-meta-4"
+                  }`}
+                >
+                  <img src={iconPasien} alt="Pasien" />
+                  Pasien
+                </NavLink>
+              </li>
+              {/* <!-- Menu Pasien --> */}
+
+              {/* <!-- Menu Petugas --> */}
+              <li>
+                <NavLink
+                  to="/admin/petugas-management"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
+                    pathname.includes("petugas-management") &&
+                    "bg-primary-dark dark:bg-meta-4"
+                  }`}
+                >
+                  <img src={iconPetugas} alt="Petugas" />
+                  Petugas
+                </NavLink>
+              </li>
+              {/* <!-- Menu Petugas --> */}
+
+              {/* <!-- Menu Dokter --> */}
+              <li>
+                <NavLink
+                  to="/admin/dokter-management"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-primary-dark dark:hover:bg-meta-4 ${
+                    pathname.includes("dokter-management") &&
+                    "bg-primary-dark dark:bg-meta-4"
+                  }`}
+                >
+                  <img src={iconDokter} alt="Dokter" />
+                  Dokter
+                </NavLink>
+              </li>
+              {/* <!-- Menu Dokter --> */}
             </ul>
           </div>
         </nav>

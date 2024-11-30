@@ -22,7 +22,7 @@ const FormCreatePasien = () => {
     no_sim: '',
     email: '',
     password: '',
-    ktp: ''
+    ktp: '',
   });
 
   const [jenisKelamin, setJenisKelamin] = useState<string>('');
@@ -67,7 +67,7 @@ const FormCreatePasien = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formattedDate = formatDate(inputValue.tanggal_lahir);
+    const formattedDate = inputValue.tanggal_lahir ? formatDate(inputValue.tanggal_lahir) : '';
 
     const data = {
       ...inputValue,
@@ -211,7 +211,7 @@ const FormCreatePasien = () => {
                       type="date"
                       id="tanggal_lahir"
                       name="tanggal_lahir"
-                      value={inputValue.tanggal_lahir.toString()}
+                      value={inputValue.tanggal_lahir ? inputValue.tanggal_lahir.toString() : ''}
                       onChange={handleInput}
                       placeholder="Tanggal Lahir"
                       className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
@@ -256,7 +256,8 @@ const FormCreatePasien = () => {
                       id="jenis_kelamin"
                       value={inputValue.jenis_kelamin}
                       onChange={handleJenisKelaminSelect}
-                      className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
+                      className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                    >
                       <option value="">Select Jenis Kelamin</option>
                       <option value="pria">Pria</option>
                       <option value="wanita">Wanita</option>
@@ -277,7 +278,8 @@ const FormCreatePasien = () => {
                       id="agama"
                       value={inputValue.agama}
                       onChange={handleAgamaSelect}
-                      className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
+                      className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                    >
                       <option value="">Select Agama</option>
                       <option value="islam">Islam</option>
                       <option value="kristen">Kristen</option>
@@ -303,7 +305,8 @@ const FormCreatePasien = () => {
                       id="ras"
                       value={inputValue.ras}
                       onChange={handleRasSelect}
-                      className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
+                      className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                    >
                       <option value="">Select Ras</option>
                       <option value="white">White</option>
                       <option value="black">Black</option>
@@ -416,7 +419,8 @@ const FormCreatePasien = () => {
                       id="status_pernikahan"
                       value={inputValue.status_pernikahan}
                       onChange={handleStatusPernikahanSelect}
-                      className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
+                      className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                    >
                       <option value="">Select Status Pernikahan</option>
                       <option value="single">Single</option>
                       <option value="married">Married</option>
@@ -481,7 +485,8 @@ const FormCreatePasien = () => {
                       id="kelompok_etnis"
                       value={inputValue.kelompok_etnis}
                       onChange={handleKelompokEtnisSelect}
-                      className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
+                      className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                    >
                       <option value="">Select Kelompok Etnis</option>
                       <option value="hispanic">Hispanic</option>
                       <option value="non-hispanic">Non Hispanic</option>
@@ -569,7 +574,8 @@ const FormCreatePasien = () => {
                       id="status_pasien"
                       value={inputValue.status_pasien}
                       onChange={handleStatusPasienSelect}
-                      className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
+                      className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                    >
                       <option value="">Select Status Pasien</option>
                       <option value="dead">Dead</option>
                       <option value="alive">Alive</option>

@@ -6,7 +6,11 @@ import Illustration from '../../images/illustrations/auth.svg';
 
 axios.defaults.withCredentials = true;
 
-const Login = (props: any) => {
+interface LoginProps {
+  user: 'admin' | 'dokter' | 'petugas' | 'pasien';
+}
+
+const Login = (props: LoginProps) => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     email: '',

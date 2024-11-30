@@ -40,7 +40,7 @@ const AdminTable = () => {
   }, []);
 
   // Invoke when user click to request another page.
-  const handlePageClick = (event: any) => {
+  const handlePageClick = (event: { selected: number }) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
     setItemOffset(newOffset);
     currentPage = event.selected;
@@ -124,7 +124,7 @@ const AdminTable = () => {
                     </td>
                     <td className="max-w-[80px] border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
                       <p className="text-black dark:text-white">
-                        {items.name}
+                        {items.nama_admin}
                       </p>
                     </td>
                     <td className="max-w-[200px]  border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
@@ -134,7 +134,7 @@ const AdminTable = () => {
                     </td>
                     <td className="max-w-[200px]  border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
                       <p className="overflow-ellipsis overflow-hidden text-black dark:text-white">
-                        {items.phone}
+                        {items.telepon}
                       </p>
                     </td>
                     <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">

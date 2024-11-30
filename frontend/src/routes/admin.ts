@@ -6,9 +6,6 @@ const AdminManagement = lazy(
 const FormCreateAdmin = lazy(
   () => import('../pages/Admin/Admin Management/FormCreateAdmin')
 );
-const FormEditAdmin = lazy(
-  () => import('../pages/Admin/Admin Management/FormEditAdmin')
-);
 
 const coreRoutes = [
   {
@@ -20,11 +17,6 @@ const coreRoutes = [
     path: '/admin/admin-management/create',
     title: 'Create Admin',
     component: FormCreateAdmin,
-  },
-  {
-    path: '/admin/admin-management/edit/:id',
-    title: 'Edit Admin',
-    component: FormEditAdmin,
   },
 ];
 

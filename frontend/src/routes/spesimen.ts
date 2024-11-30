@@ -6,9 +6,6 @@ const SpesimenManagement = lazy(
 const FormCreateSpesimen = lazy(
   () => import("../pages/Admin/Spesimen Management/FormCreateSpesimen")
 );
-const FormEditSpesimen = lazy(
-  () => import("../pages/Admin/Spesimen Management/FormEditSpesimen")
-);
 
 const coreRoutes = [
   {
@@ -20,11 +17,6 @@ const coreRoutes = [
     path: "/admin/spesimen-management/create",
     title: "Create Spesimen",
     component: FormCreateSpesimen,
-  },
-  {
-    path: "/admin/spesimen-management/edit/:id",
-    title: "Edit Spesimen",
-    component: FormEditSpesimen,
   },
 ];
 

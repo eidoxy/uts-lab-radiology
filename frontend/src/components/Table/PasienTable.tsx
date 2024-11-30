@@ -36,6 +36,7 @@ const PasienTable = () => {
           sort: '-created',
         });
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const pasienData = records.map((record: any) => ({
           id_pasien: record.id,
           id_eksternal: record.id_eksternal,
@@ -68,10 +69,10 @@ const PasienTable = () => {
     };
 
     fetchPasien();
-  }, []);
+  }, [pb]);
 
   // Invoke when user click to request another page.
-  const handlePageClick = (event: any) => {
+  const handlePageClick = (event: { selected: number }) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
     setItemOffset(newOffset);
     currentPage = event.selected;
