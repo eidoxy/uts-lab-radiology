@@ -5,10 +5,10 @@ import { AdminQueryResult } from '../../models/admin.model';
 import getConnection from '..';
 
 const data = {
-  name: 'admin',
+  nama_admin: 'admin',
   email: 'admin@gmail.com',
   password: 'admin',
-  phone: '123457890',
+  telepon: '123457890',
 };
 
 export default async function seedAdmins() {
@@ -17,7 +17,7 @@ export default async function seedAdmins() {
 
     if (connection) {
       const [rows] = await connection.query<AdminQueryResult[]>(
-        'SELECT * FROM admins WHERE email = ?',
+        'SELECT * FROM admin WHERE email = ?',
         [data.email]
       );
 
@@ -27,7 +27,7 @@ export default async function seedAdmins() {
 
         await connection.query<ResultSetHeader>(
           'INSERT INTO admins (name, email, password, phone) VALUES (?, ?, ?, ?)',
-          [data.name, data.email, hashedPasswod, data.phone]
+          [data.nama_admin, data.email, hashedPasswod, data.telepon]
         );
 
         console.log(`Admin with email ${data.email} seeded!`);
