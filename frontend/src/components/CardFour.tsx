@@ -1,17 +1,47 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import PocketBase from 'pocketbase';
+import { Pasien } from '../models/pasien.model';
 
 const CardFour = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Pasien[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      const pb = new PocketBase('https://rawat-jalan.pockethost.io');
+      
       try {
-        const res = await axios.get('https://wabw.chasterise.fun/api/pasien', {
-          withCredentials: true,
+        const records = await pb.collection('pasien').getFullList({
+          sort: '-created',
         });
-        setData(res.data.payload);
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const dataPasien = records.map((record: any) => ({
+          id_pasien: record.id,
+          id_eksternal: record.id_eksternal,
+          nama_lengkap: record.nama_lengkap,
+          nama_panggilan: record.nama_panggilan,
+          nama_ibu: record.nama_ibu,
+          jenis_kelamin: record.jenis_kelamin,
+          tanggal_lahir: record.tanggal_lahir,
+          tempat_lahir: record.tempat_lahir,
+          agama: record.agama,
+          ras: record.ras,
+          alamat: record.alamat,
+          kode_negara: record.kode_negara,
+          no_telp: record.no_telp,
+          bahasa_utama: record.bahasa_utama,
+          status_pernikahan: record.status_pernikahan,
+          no_rekening: record.no_rekening,
+          no_sim: record.no_sim,
+          kelompok_etnis: record.kelompok_etnis,
+          kelahiran_kembar: record.kelahiran_kembar,
+          indikator_meninggal: record.indikator_meninggal,
+          kewarganegaraan: record.kewarganegaraan,
+          status_militer: record.status_militer,
+          tanggal_meninggal: record.tanggal_meninggal,
+        }));
+        setData(dataPasien);
         setLoading(false);
       } catch (error) {
         console.log(error);

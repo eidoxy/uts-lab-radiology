@@ -161,7 +161,7 @@ const AdminTable = () => {
                           onClick={(event) =>
                             handleDelete(items.id ?? 0, event)
                           }
-                          className="hover:text-danger transition"
+                          className="text-danger transition"
                         >
                           <svg
                             className="fill-current"
