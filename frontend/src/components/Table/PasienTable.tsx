@@ -19,13 +19,9 @@ const PasienTable = () => {
   const pageCount = Math.ceil(data.length / itemsPerPage);
   let currentPage = itemOffset / itemsPerPage;
 
-  const pb = new PocketBase('https://rawat-jalan.pockethost.io');
-
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
+    const pb = new PocketBase('https://rawat-jalan.pockethost.io');
 
-  useEffect(() => {
     const fetchPasien = async () => {
       try {
         // const response = await axios.get(
@@ -63,13 +59,14 @@ const PasienTable = () => {
           tanggal_meninggal: record.tanggal_meninggal,
         }));
         setData(pasienData);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching pasien:', error);
       }
     };
 
     fetchPasien();
-  }, [pb]);
+  }, []);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event: { selected: number }) => {
