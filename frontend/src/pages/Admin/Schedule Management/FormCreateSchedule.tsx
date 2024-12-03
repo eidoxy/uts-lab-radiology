@@ -31,9 +31,9 @@ const FormCreateSchedule = () => {
     const fetchData = async () => {
       try {
         const [pemeriksaanResponse, dokterResponse, petugasResponse] = await Promise.all([
-          axios.get('http://localhost:3000/api/pemeriksaan'),
-          axios.get('http://localhost:3000/api/dokter'),
-          axios.get('http://localhost:3000/api/petugas'),
+          axios.get('https://wabw.chasterise.fun/api/pemeriksaan'),
+          axios.get('https://wabw.chasterise.fun/api/dokter'),
+          axios.get('https://wabw.chasterise.fun/api/petugas'),
         ]);
 
         if (
@@ -107,12 +107,13 @@ const FormCreateSchedule = () => {
       status_jadwal: selectedStatus,
     };
 
-    console.log(data);
-
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/schedule/create',
-        data
+        'https://wabw.chasterise.fun/api/schedule/create',
+        data,
+        {
+          withCredentials: true,
+        }
       );
 
       if (response.status === 201) {

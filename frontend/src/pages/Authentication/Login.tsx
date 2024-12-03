@@ -38,7 +38,7 @@ const Login = (props: LoginProps) => {
     if (props.user === 'admin') {
       try {
         const response = await axios.post(
-          'http://localhost:3000/api/admin/login',
+          'https://wabw.chasterise.fun/api/admin/login',
           inputValue,
           { withCredentials: true }
         );
@@ -62,8 +62,11 @@ const Login = (props: LoginProps) => {
     } else if (props.user === 'dokter') {
       try {
         const response = await axios.post(
-          'http://localhost:3000/api/dokter/login',
-          inputValue
+          'https://wabw.chasterise.fun/api/dokter/login',
+          inputValue,
+          {
+            withCredentials: true,
+          }
         );
 
         if (response.status === 200) {
@@ -85,8 +88,11 @@ const Login = (props: LoginProps) => {
     } else if (props.user === 'petugas') {
       try {
         const response = await axios.post(
-          'http://localhost:3000/api/petugas/login',
-          inputValue
+          'https://wabw.chasterise.fun/api/petugas/login',
+          inputValue,
+          {
+            withCredentials: true,
+          }
         );
 
         if (response.status === 200) {
@@ -108,8 +114,11 @@ const Login = (props: LoginProps) => {
     } else if (props.user === 'pasien') {
       try {
         const response = await axios.post(
-          'http://localhost:3000/api/pasien/login',
-          inputValue
+          'https://wabw.chasterise.fun/api/pasien/login',
+          inputValue,
+          {
+            withCredentials: true,
+          }
         );
 
         if (response.status === 200) {

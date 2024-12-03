@@ -34,8 +34,11 @@ const FormCreateLayanan = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/layanan/create',
-        inputValue
+        'https://wabw.chasterise.fun/api/layanan/create',
+        inputValue,
+        {
+          withCredentials: true,
+        }
       );
 
       if (response.status === 201) {

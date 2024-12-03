@@ -25,7 +25,10 @@ const PemeriksaanTable = () => {
     const fetchPemeriksaan = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:3000/api/pemeriksaan'
+          'https://wabw.chasterise.fun/api/pemeriksaan',
+          {
+            withCredentials: true,
+          }
         );
 
         if (response.status === 200) {
@@ -51,7 +54,10 @@ const PemeriksaanTable = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/pemeriksaan/delete/${id}`
+        `https://wabw.chasterise.fun/api/pemeriksaan/delete/${id}`,
+        {
+          withCredentials: true,
+        }
       );
 
       if (response.status === 200) {

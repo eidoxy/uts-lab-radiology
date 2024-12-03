@@ -8,7 +8,6 @@ interface ProtectedRoutesProps {
 
 const ProtectedRoutes: FC<ProtectedRoutesProps> = ({ children }) => {
   const token = Cookies.get('token');
-  console.log('Token:', token); // Debugging line
 
   if (token !== undefined) {
     return children ? <>{children}</> : <Outlet />;

@@ -26,10 +26,11 @@ const ScheduleTable = () => {
     const fetchSchedules = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:3000/api/schedule'
+          'https://wabw.chasterise.fun/api/schedule',
+          {
+            withCredentials: true,
+          }
         );
-
-        console.log('response: ', response.data.payload);
 
         if (response.status === 200) {
           setData(response.data.payload);
@@ -54,7 +55,10 @@ const ScheduleTable = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/category/delete/${id}`
+        `https://wabw.chasterise.fun/api/category/delete/${id}`,
+        {
+          withCredentials: true,
+        }
       );
 
       if (response.status === 200) {

@@ -46,7 +46,7 @@
 
 //     try {
 //       const response = await axios.put(
-//         `http://localhost:3000/api/author/update/${id}`,
+//         `https://wabw.chasterise.fun/api/author/update/${id}`,
 //         inputValue
 //       );
 

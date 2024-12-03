@@ -34,13 +34,25 @@ const FormCreatePemeriksaan = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [pasienResponse, dokterResponse, layananResponse, spesimenResponse] =
-          await Promise.all([
-            axios.get('http://localhost:3000/api/pasien'),
-            axios.get('http://localhost:3000/api/dokter'),
-            axios.get('http://localhost:3000/api/layanan'),
-            axios.get('http://localhost:3000/api/spesimen'),
-          ]);
+        const [
+          pasienResponse,
+          dokterResponse,
+          layananResponse,
+          spesimenResponse,
+        ] = await Promise.all([
+          axios.get('https://wabw.chasterise.fun/api/pasien', {
+            withCredentials: true,
+          }),
+          axios.get('https://wabw.chasterise.fun/api/dokter', {
+            withCredentials: true,
+          }),
+          axios.get('https://wabw.chasterise.fun/api/layanan', {
+            withCredentials: true,
+          }),
+          axios.get('https://wabw.chasterise.fun/api/spesimen', {
+            withCredentials: true,
+          }),
+        ]);
 
         if (
           pasienResponse.status === 200 &&
@@ -113,7 +125,7 @@ const FormCreatePemeriksaan = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/pemeriksaan/create',
+        'https://wabw.chasterise.fun/api/pemeriksaan/create',
         data
       );
 

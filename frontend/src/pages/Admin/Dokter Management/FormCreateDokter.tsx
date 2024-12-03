@@ -47,12 +47,13 @@ const FormCreateDokter = () => {
       status_lisensi: selectedStatusLisensi,
     }
 
-    console.log(data);
-    
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/dokter/create',
-        data
+        'https://wabw.chasterise.fun/api/dokter/create',
+        data,
+        {
+          withCredentials: true,
+        }
       );
 
       if (response.status === 201) {

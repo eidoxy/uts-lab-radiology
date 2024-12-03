@@ -25,7 +25,10 @@ const DokterTable = () => {
     const fetchDokter = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:3000/api/dokter'
+          'https://wabw.chasterise.fun/api/dokter',
+          {
+            withCredentials: true,
+          }
         );
 
         if (response.status === 200) {
@@ -51,7 +54,10 @@ const DokterTable = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/dokter/delete/${id}`
+        `https://wabw.chasterise.fun/api/dokter/delete/${id}`,
+        {
+          withCredentials: true,
+        }
       );
 
       if (response.status === 200) {

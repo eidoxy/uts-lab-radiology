@@ -122,8 +122,11 @@ const FormCreatePasien = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/pasien/create',
-        data
+        'https://wabw.chasterise.fun/api/pasien/create',
+        data,
+        {
+          withCredentials: true,
+        }
       );
 
       if (response.status === 201) {

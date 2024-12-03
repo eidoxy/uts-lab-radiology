@@ -25,7 +25,10 @@ const LayananTable = () => {
     const fetchLayanan = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:3000/api/layanan'
+          'https://wabw.chasterise.fun/api/layanan',
+          {
+            withCredentials: true,
+          }
         );
 
         if (response.status === 200) {
@@ -51,7 +54,10 @@ const LayananTable = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/layanan/delete/${id}`
+        `https://wabw.chasterise.fun/api/layanan/delete/${id}`,
+        {
+          withCredentials: true,
+        }
       );
 
       if (response.status === 200) {

@@ -25,7 +25,9 @@ const AdminTable = () => {
     const fetchAdmins = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:3000/api/admin'
+          'https://wabw.chasterise.fun/api/admin', {
+            withCredentials: true,
+          }
         );
 
         if (response.status === 200) {
@@ -51,7 +53,10 @@ const AdminTable = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/admin/delete/${id}`
+        `https://wabw.chasterise.fun/api/admin/delete/${id}`,
+        {
+          withCredentials: true,
+        }
       );
 
       if (response.status === 200) {

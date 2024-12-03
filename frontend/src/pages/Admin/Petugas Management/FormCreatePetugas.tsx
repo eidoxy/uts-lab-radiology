@@ -46,12 +46,13 @@ const FormCreatePetugas = () => {
       role: selectedRole,
     }
 
-    console.log("data: ", data);
-
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/petugas/create',
-        data
+        'https://wabw.chasterise.fun/api/petugas/create',
+        data,
+        {
+          withCredentials: true,
+        }
       );
 
       if (response.status === 201) {
