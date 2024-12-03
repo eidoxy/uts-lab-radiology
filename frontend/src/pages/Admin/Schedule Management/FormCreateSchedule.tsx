@@ -31,9 +31,9 @@ const FormCreateSchedule = () => {
     const fetchData = async () => {
       try {
         const [pemeriksaanResponse, dokterResponse, petugasResponse] = await Promise.all([
-          axios.get('https://wabw.chasterise.fun/api/pemeriksaan'),
-          axios.get('https://wabw.chasterise.fun/api/dokter'),
-          axios.get('https://wabw.chasterise.fun/api/petugas'),
+          axios.get('http://localhost:3000/api/pemeriksaan'),
+          axios.get('http://localhost:3000/api/dokter'),
+          axios.get('http://localhost:3000/api/petugas'),
         ]);
 
         if (
@@ -109,7 +109,7 @@ const FormCreateSchedule = () => {
 
     try {
       const response = await axios.post(
-        'https://wabw.chasterise.fun/api/schedule/create',
+        'http://localhost:3000/api/schedule/create',
         data,
         {
           withCredentials: true,

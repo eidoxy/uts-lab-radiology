@@ -25,7 +25,7 @@ const FormCreateSpesimen = () => {
     const fetchData = async () => {
       try {
         const pemeriksaanResponse = await axios.get(
-          'https://wabw.chasterise.fun/api/pemeriksaan',
+          'http://localhost:3000/api/pemeriksaan',
           {
             withCredentials: true,
           }
@@ -86,7 +86,7 @@ const FormCreateSpesimen = () => {
       };
       
       const response = await axios.post(
-        'https://wabw.chasterise.fun/api/spesimen/create',
+        'http://localhost:3000/api/spesimen/create',
         data,
         {
           withCredentials: true,

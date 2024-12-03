@@ -77,7 +77,7 @@ const PasienTable = () => {
 
   //   try {
   //     const response = await axios.delete(
-  //       `https://wabw.chasterise.fun/api/pasien/delete/${id}`,
+  //       `http://localhost:3000/api/pasien/delete/${id}`,
   //       {
   //         withCredentials: true,
   //       }

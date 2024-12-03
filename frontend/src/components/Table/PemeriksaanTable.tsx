@@ -25,7 +25,7 @@ const PemeriksaanTable = () => {
     const fetchPemeriksaan = async () => {
       try {
         const response = await axios.get(
-          'https://wabw.chasterise.fun/api/pemeriksaan',
+          'http://localhost:3000/api/pemeriksaan',
           {
             withCredentials: true,
           }
@@ -54,7 +54,7 @@ const PemeriksaanTable = () => {
 
     try {
       const response = await axios.delete(
-        `https://wabw.chasterise.fun/api/pemeriksaan/delete/${id}`,
+        `http://localhost:3000/api/pemeriksaan/delete/${id}`,
         {
           withCredentials: true,
         }

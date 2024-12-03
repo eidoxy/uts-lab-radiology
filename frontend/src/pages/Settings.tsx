@@ -34,7 +34,7 @@ const Settings = () => {
       const fetchAdmin = async () => {
         try {
           const response = await axios.get(
-            `https://wabw.chasterise.fun/api/admin/${adminId}`,
+            `http://localhost:3000/api/admin/${adminId}`,
             {
               withCredentials: true,
             }

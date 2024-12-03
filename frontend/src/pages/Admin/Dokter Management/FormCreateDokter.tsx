@@ -49,7 +49,7 @@ const FormCreateDokter = () => {
 
     try {
       const response = await axios.post(
-        'https://wabw.chasterise.fun/api/dokter/create',
+        'http://localhost:3000/api/dokter/create',
         data,
         {
           withCredentials: true,

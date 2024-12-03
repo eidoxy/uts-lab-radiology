@@ -8,7 +8,7 @@ const CardOne = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('https://wabw.chasterise.fun/api/layanan', {
+        const res = await axios.get('http://localhost:3000/api/layanan', {
           withCredentials: true,
         });
         setData(res.data.payload);

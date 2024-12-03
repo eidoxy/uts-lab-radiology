@@ -40,16 +40,16 @@ const FormCreatePemeriksaan = () => {
           layananResponse,
           spesimenResponse,
         ] = await Promise.all([
-          axios.get('https://wabw.chasterise.fun/api/pasien', {
+          axios.get('http://localhost:3000/api/pasien', {
             withCredentials: true,
           }),
-          axios.get('https://wabw.chasterise.fun/api/dokter', {
+          axios.get('http://localhost:3000/api/dokter', {
             withCredentials: true,
           }),
-          axios.get('https://wabw.chasterise.fun/api/layanan', {
+          axios.get('http://localhost:3000/api/layanan', {
             withCredentials: true,
           }),
-          axios.get('https://wabw.chasterise.fun/api/spesimen', {
+          axios.get('http://localhost:3000/api/spesimen', {
             withCredentials: true,
           }),
         ]);
@@ -125,7 +125,7 @@ const FormCreatePemeriksaan = () => {
 
     try {
       const response = await axios.post(
-        'https://wabw.chasterise.fun/api/pemeriksaan/create',
+        'http://localhost:3000/api/pemeriksaan/create',
         data
       );
 

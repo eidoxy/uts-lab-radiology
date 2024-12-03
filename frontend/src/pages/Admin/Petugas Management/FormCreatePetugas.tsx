@@ -48,7 +48,7 @@ const FormCreatePetugas = () => {
 
     try {
       const response = await axios.post(
-        'https://wabw.chasterise.fun/api/petugas/create',
+        'http://localhost:3000/api/petugas/create',
         data,
         {
           withCredentials: true,

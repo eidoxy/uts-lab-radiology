@@ -122,7 +122,7 @@ const FormCreatePasien = () => {
 
     try {
       const response = await axios.post(
-        'https://wabw.chasterise.fun/api/pasien/create',
+        'http://localhost:3000/api/pasien/create',
         data,
         {
           withCredentials: true,

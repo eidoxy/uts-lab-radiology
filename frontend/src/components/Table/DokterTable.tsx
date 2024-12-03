@@ -25,7 +25,7 @@ const DokterTable = () => {
     const fetchDokter = async () => {
       try {
         const response = await axios.get(
-          'https://wabw.chasterise.fun/api/dokter',
+          'http://localhost:3000/api/dokter',
           {
             withCredentials: true,
           }
@@ -54,7 +54,7 @@ const DokterTable = () => {
 
     try {
       const response = await axios.delete(
-        `https://wabw.chasterise.fun/api/dokter/delete/${id}`,
+        `http://localhost:3000/api/dokter/delete/${id}`,
         {
           withCredentials: true,
         }

@@ -8,7 +8,7 @@ const CardTwo = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('https://wabw.chasterise.fun/api/dokter', {
+        const res = await axios.get('http://localhost:3000/api/dokter', {
           withCredentials: true,
         });
         setData(res.data.payload);

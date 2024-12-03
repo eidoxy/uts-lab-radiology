@@ -25,7 +25,7 @@ const PetugasTable = () => {
     const fetchPetugas = async () => {
       try {
         const response = await axios.get(
-          'https://wabw.chasterise.fun/api/petugas',
+          'http://localhost:3000/api/petugas',
           {
             withCredentials: true,
           }
@@ -54,7 +54,7 @@ const PetugasTable = () => {
 
     try {
       const response = await axios.delete(
-        `https://wabw.chasterise.fun/api/petugas/delete/${id}`,
+        `http://localhost:3000/api/petugas/delete/${id}`,
         {
           withCredentials: true,
         }

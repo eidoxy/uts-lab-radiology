@@ -38,7 +38,7 @@ const FormCreateAdmin = () => {
 
     try {
       const response = await axios.post(
-        'https://wabw.chasterise.fun/api/admin/create',
+        'http://localhost:3000/api/admin/create',
         inputValue,
         {
           withCredentials: true,

@@ -25,7 +25,7 @@ const SpesimenTable = () => {
     const fetchSpesimen = async () => {
       try {
         const response = await axios.get(
-          'https://wabw.chasterise.fun/api/spesimen',
+          'http://localhost:3000/api/spesimen',
           {
             withCredentials: true,
           }
@@ -54,7 +54,7 @@ const SpesimenTable = () => {
 
     try {
       const response = await axios.delete(
-        `https://wabw.chasterise.fun/api/spesimen/delete/${id}`,
+        `http://localhost:3000/api/spesimen/delete/${id}`,
         {
           withCredentials: true,
         }

@@ -25,7 +25,7 @@ const LayananTable = () => {
     const fetchLayanan = async () => {
       try {
         const response = await axios.get(
-          'https://wabw.chasterise.fun/api/layanan',
+          'http://localhost:3000/api/layanan',
           {
             withCredentials: true,
           }
@@ -54,7 +54,7 @@ const LayananTable = () => {
 
     try {
       const response = await axios.delete(
-        `https://wabw.chasterise.fun/api/layanan/delete/${id}`,
+        `http://localhost:3000/api/layanan/delete/${id}`,
         {
           withCredentials: true,
         }
