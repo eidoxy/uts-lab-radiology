@@ -5,7 +5,6 @@ import axios from 'axios';
 
 import Loader from '../../common/Loader';
 import { Spesimen } from '../../models/spesimen.model';
-import formatDate from '../../utils/format';
 
 const SpesimenTable = () => {
   const [data, setData] = useState<Spesimen[]>([]);
@@ -64,6 +63,28 @@ const SpesimenTable = () => {
     } catch (error) {
       console.error('Error deleting admin:', error);
     }
+  };
+
+  const formatDate = (date: Date | string): string => {
+    const dateObj = new Date(date);
+    const year = dateObj.getFullYear();
+    const monthNames = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
+    const month = monthNames[dateObj.getMonth()];
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    return `${year} ${month} ${day}`;
   };
 
   return (
@@ -137,7 +158,7 @@ const SpesimenTable = () => {
                     </td>
                     <td className="max-w-[80px] border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
                       <p className="text-black dark:text-white">
-                        {items.nama_lengkap} ~ {items.nama_dokter} ~ {items.tanggal_permintaan ? formatDate(items.tanggal_permintaan) : 'N/A'}
+                        {items.nama_lengkap} - {items.nama_dokter} - {items.tanggal_permintaan ? formatDate(items.tanggal_permintaan) : 'N/A'}
                       </p>
                     </td>
                     <td className="max-w-[80px] border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">

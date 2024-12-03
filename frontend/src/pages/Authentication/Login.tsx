@@ -39,7 +39,8 @@ const Login = (props: LoginProps) => {
       try {
         const response = await axios.post(
           'http://localhost:3000/api/admin/login',
-          inputValue
+          inputValue,
+          { withCredentials: true }
         );
 
         if (response.status === 200) {
