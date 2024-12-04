@@ -18,8 +18,11 @@ export async function getSchedules() {
         jadwal_pemeriksaan.ruangan,
         jadwal_pemeriksaan.status_jadwal,
         pasien.nama_lengkap as pasien,
+        pasien.id_pasien as id_pasien,
         dokter.nama_dokter as dokter,
-        petugas.nama_petugas as petugas
+        dokter.id_dokter as id_dokter,
+        petugas.nama_petugas as petugas,
+        petugas.id_petugas as id_petugas
       FROM jadwal_pemeriksaan
       JOIN pemeriksaan ON jadwal_pemeriksaan.id_pemeriksaan = pemeriksaan.id_pemeriksaan
       JOIN pasien ON pemeriksaan.id_pasien = pasien.id_pasien
@@ -68,8 +71,11 @@ export async function getScheduleById(id: number) {
         jadwal_pemeriksaan.ruangan,
         jadwal_pemeriksaan.status_jadwal,
         pasien.nama_lengkap as pasien,
+        pasien.id_pasien as id_pasien,
         dokter.nama_dokter as dokter,
-        petugas.nama_petugas as petugas
+        dokter.id_dokter as id_dokter,
+        petugas.nama_petugas as petugas,
+        petugas.id_petugas as id_petugas
       FROM jadwal_pemeriksaan
       JOIN pemeriksaan ON jadwal_pemeriksaan.id_pemeriksaan = pemeriksaan.id_pemeriksaan
       JOIN pasien ON pemeriksaan.id_pasien = pasien.id_pasien

@@ -15,7 +15,9 @@ export async function getPemeriksaan() {
         SELECT
         pemeriksaan.id_pemeriksaan,
         pasien.nama_lengkap,
+        pasien.id_pasien,
         dokter.nama_dokter,
+        dokter.id_dokter,
         COALESCE(spesimen.jenis_spesimen, '-') AS jenis_spesimen,
         layanan.nama_layanan,
         pemeriksaan.jenis_pemeriksaan,
@@ -68,7 +70,9 @@ export async function getPemeriksaanById(id: number) {
         SELECT
         pemeriksaan.id_pemeriksaan,
         pasien.nama_lengkap,
+        pasien.id_pasien,
         dokter.nama_dokter,
+        dokter.id_dokter,
         COALESCE(spesimen.jenis_spesimen, '-') AS jenis_spesimen,
         layanan.nama_layanan,
         pemeriksaan.jenis_pemeriksaan,
