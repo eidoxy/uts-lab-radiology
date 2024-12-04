@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import Loader from '../../common/Loader';
 import { Layanan } from '../../models/layanan.model';
+import { formatPrice } from '../../utils/format';
 
 const LayananTable = () => {
   const [data, setData] = useState<Layanan[]>([]);
@@ -132,7 +133,7 @@ const LayananTable = () => {
                     </td>
                     <td className="max-w-[200px]  border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
                       <p className="overflow-ellipsis overflow-hidden text-black dark:text-white">
-                        {items.biaya_layanan}
+                        {formatPrice(items.biaya_layanan)}
                       </p>
                     </td>
                     <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">

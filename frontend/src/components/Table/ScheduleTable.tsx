@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate';
 import axios from 'axios';
 
 import Loader from '../../common/Loader';
-import formatDate from '../../utils/format';
+import { formatDate } from '../../utils/format';
 import { Schedule } from '../../models/schedule.model';
 
 const ScheduleTable = () => {

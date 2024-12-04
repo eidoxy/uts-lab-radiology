@@ -2,7 +2,7 @@ import { useState, ChangeEvent } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import formatDate from '../../../utils/format';
+import { formatDate } from '../../../utils/format';
 import Breadcrumb from '../../../components/Breadcrumb';
 import { Pasien } from '../../../models/pasien.model';
 

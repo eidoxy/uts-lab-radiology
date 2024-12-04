@@ -60,7 +60,7 @@ const AdminTable = () => {
       );
 
       if (response.status === 200) {
-        const updatedData = data.filter((item: Admin) => item.id !== id);
+        const updatedData = data.filter((item: Admin) => item.id_admin !== id);
         setData(updatedData);
       }
     } catch (error) {
@@ -121,7 +121,7 @@ const AdminTable = () => {
               </thead>
               <tbody>
                 {currentItems.map((items: Admin, id: number) => (
-                  <tr key={id}>
+                  <tr key={items.id_admin}>
                     <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
                       <p className="text-black dark:text-white">
                         {currentPage * itemsPerPage + id + 1}
@@ -159,7 +159,7 @@ const AdminTable = () => {
 
                         <button
                           onClick={(event) =>
-                            handleDelete(items.id ?? 0, event)
+                            handleDelete(items.id_admin ?? 0, event)
                           }
                           className="text-danger transition"
                         >

@@ -5,7 +5,7 @@ import axios from 'axios';
 import Breadcrumb from '../../../components/Breadcrumb';
 import { Spesimen } from '../../../models/spesimen.model';
 import { Pemeriksaan } from '../../../models/pemeriksaan.model';
-import formatDate from '../../../utils/format';
+import { formatDate } from '../../../utils/format';
 
 const FormCreateSpesimen = () => {
   const navigate = useNavigate();

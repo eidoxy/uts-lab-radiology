@@ -7,7 +7,7 @@ import { Pemeriksaan } from '../../../models/pemeriksaan.model';
 import { Pasien } from '../../../models/pasien.model';
 import { Dokter } from '../../../models/dokter.model';
 import { Layanan } from '../../../models/layanan.model';
-import formatDate from '../../../utils/format';
+import { formatDate } from '../../../utils/format';
 
 const FormCreatePemeriksaan = () => {
   const navigate = useNavigate();

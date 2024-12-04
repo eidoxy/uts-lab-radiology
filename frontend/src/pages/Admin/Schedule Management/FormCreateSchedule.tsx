@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import Breadcrumb from '../../../components/Breadcrumb';
-import formatDate from '../../../utils/format';
+import { formatDate } from '../../../utils/format';
 import { Schedule } from '../../../models/schedule.model';
 import { Pemeriksaan } from '../../../models/pemeriksaan.model';
 import { Petugas } from '../../../models/petugas.model';
@@ -56,7 +56,16 @@ const FormCreateSchedule = () => {
   }, []);
 
   const handlePemeriksaanSelect = (e: ChangeEvent<HTMLSelectElement>) => {
+    const selectedPemeriksaanId = e.target.value;
     setSelectedPemeriksaan(e.target.value);
+
+    const selectedPemeriksaan = schedule.pemeriksaan.find(
+      (pemeriksaan: Pemeriksaan) => pemeriksaan.id_pemeriksaan === Number(selectedPemeriksaanId)
+    ) as Pemeriksaan | undefined;
+
+    if (selectedPemeriksaan) {
+      setSelectedDokter(String(selectedPemeriksaan.id_dokter));
+    }
   };
 
   const handlePetugasSelect = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -196,6 +205,7 @@ const FormCreateSchedule = () => {
                       onChange={handleDokterSelect}
                       className="w-full text-black-5 rounded border-2 border-stroke bg-whiten py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-black-4 dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                       required
+                      disabled
                     >
                       <option value="">Select Dokter</option>
                       {schedule.dokter.map((dokter: Dokter) => (

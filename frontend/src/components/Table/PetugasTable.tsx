@@ -65,7 +65,7 @@ const PetugasTable = () => {
         setData(updatedData);
       }
     } catch (error) {
-      console.error('Error deleting admin:', error);
+      console.error('Error deleting petugas:', error);
     }
   };
 
@@ -122,7 +122,7 @@ const PetugasTable = () => {
               </thead>
               <tbody>
                 {currentItems.map((items: Petugas, id: number) => (
-                  <tr key={id}>
+                  <tr key={items.id_petugas}>
                     <td className="border-b justify-center items-center border-[#eee] py-5 px-4 pl-5 dark:border-strokedark xl:px-8 xl:py-6 xl:pl-10">
                       <p className="text-black dark:text-white">
                         {currentPage * itemsPerPage + id + 1}
