@@ -6,6 +6,7 @@ import {
   loginPetugas,
   getPetugas,
   getPetugasById,
+  deletePetugas,
 } from '../service/petugas.service';
 import { serverError } from '../utils/response';
 
@@ -89,6 +90,27 @@ export async function createPetugasController(req: Request, res: Response) {
     return res.status(result.status).send(result);
   } catch (error) {
     console.error('An error occurred while creating petugas: ', error);
+    return res.status(serverError.status).send(serverError);
+  }
+}
+
+export async function deletePetugasController(req: Request, res: Response) {
+  const id = Number(req.params.id);
+
+  // ? : check if id is provided
+  if (!id) {
+    return res.status(400).send({
+      status: 400,
+      message: 'ID is required',
+    });
+  }
+
+  try {
+    const result = await deletePetugas(id);
+
+    return res.status(result.status).send(result);
+  } catch (error) {
+    console.error('An error occurred while deleting petugas: ', error);
     return res.status(serverError.status).send(serverError);
   }
 }

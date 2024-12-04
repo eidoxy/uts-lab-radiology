@@ -198,3 +198,39 @@ export async function createPetugas(bodyRequest: Petugas) {
     await db.end();
   }
 }
+
+export async function deletePetugas(id: number) {
+  const db = await getConnection();
+
+  // ? : check if the database connection is successful
+  if (!db) throw new Error('Cannot connect to database');
+
+  try {
+    const [result] = await db.query<ResultSetHeader>(
+      'DELETE FROM petugas WHERE id_petugas = ?',
+      [id]
+    );
+
+    // ? : check if the Petugas is found
+    if (result.affectedRows === 0) {
+      return {
+        status: 404,
+        message: 'Petugas not found',
+      };
+    }
+
+    // ! : return the deleted petugas
+    return {
+      status: 200,
+      message: 'Petugas deleted successfully!',
+    };
+  } catch (error) {
+    console.error('Database query error:', error);
+    return {
+      status: 500,
+      message: 'Internal server error',
+    };
+  } finally {
+    await db.end();
+  }
+}

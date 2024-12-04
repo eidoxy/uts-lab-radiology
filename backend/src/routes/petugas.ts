@@ -7,8 +7,8 @@ import {
   loginPetugasController,
   getPetugasController,
   getPetugasByIdController,
+  deletePetugasController,
   // updatePetugasController,
-  // deletePetugasController,
 } from '../controllers/petugas.controller';
 
 const publicRoutes = Router();
@@ -20,9 +20,9 @@ protectedRoutes
   .use(authenticateToken, authenticateUser)
   .get('/', getPetugasController)
   .get('/:id', getPetugasByIdController)
-  .post('/create', createPetugasController);
+  .post('/create', createPetugasController)
+  .delete('/delete/:id', deletePetugasController);
   // .put('/update/:id', updatePetugasController)
-  // .delete('/delete/:id', deletePetugasController);
 
 const petugasRoutes = Router();
 petugasRoutes.use(publicRoutes);
