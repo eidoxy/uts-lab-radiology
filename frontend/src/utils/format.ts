@@ -1,4 +1,4 @@
-const formatDate = (date: Date | string): string => {
+export const formatDate = (date: Date | string): string => {
   const dateObj = new Date(date);
   const year = dateObj.getFullYear();
   const month = String(dateObj.getMonth() + 1).padStart(2, '0');
@@ -6,4 +6,10 @@ const formatDate = (date: Date | string): string => {
   return `${year}-${month}-${day}`;
 };
 
-export default formatDate;
+export const formatPrice = (price: number): string => {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+  }).format(price);
+};
