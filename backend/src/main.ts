@@ -13,21 +13,21 @@ const corsOptions = {
     origin: string | undefined,
     callback: (err: Error | null, allow?: boolean) => void
   ) => {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedDomains.includes(origin)) {
+    if (!origin || allowedDomains.includes(origin)) {
       return callback(null, true);
     } else {
+      console.error(`CORS blocked: ${origin}`);
       return callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
-  methods: ['GET,HEAD,PUT,PATCH,POST,DELETE'],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
-  optionsSuccessStatus: 200,
+  optionsSuccessStatus: 204,
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
